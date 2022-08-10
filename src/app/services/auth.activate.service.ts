@@ -18,6 +18,7 @@ export class AuthGuardService implements CanActivate {
             this.router.navigate(['/login']);
             //redirect to login/home page etc
             //return false to cancel the navigation
+            // ciao
             return false;
         } 
         return true;
