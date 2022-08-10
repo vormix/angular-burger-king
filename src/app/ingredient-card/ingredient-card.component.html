@@ -1,0 +1,40 @@
+<!--DIV CHE RACCHIUDE TUTTO-->
+<div #container class="ingredient-card-container">
+
+  <a [routerLink]="link">
+
+    <div class="ingredient-card-content">
+
+      <!--Titolo della carta-->
+      <h1 class="ingredient-card-title"> {{ nome }}</h1>
+
+      <!--Corpo della carta-->
+      <div #bodyText class="ingredient-card-body">
+        <!--TESTO testo della carta-->
+        <p>
+          {{ prezzo }}
+          {{ immagine }}
+        </p>
+
+        <div #truncator class="fade-out-truncation">
+
+        </div>
+
+      </div>
+
+    </div>
+  </a>
+
+  <!--DIV PER IL TITOLO-->
+
+
+  <div class="x-button" (click)="onXButtonClick()">
+
+
+  </div>
+
+
+
+
+
+</div>

@@ -1,0 +1,50 @@
+<!--Pagina per aggiungere delle ingredient-->
+
+<div class="form-container">
+
+  <!--CREO UN FORM-->
+  <form #ingredientForm="ngForm" (ngSubmit)="onSubmit(ingredientForm)">
+
+
+
+    <!--La classe field è una classe di bulma -->
+    <div class="field">
+      <label class="label"> Nome</label>
+      <div class="control">
+        <input type="text" name="nome" [ngModel]="ingredient.nome" required class="input">
+      </div>
+    </div>
+    <br>
+
+    <div class="field">
+      <label class="label"> Prezzo</label>
+      <div class="control">
+        <input type="text" name="prezzo" [ngModel]="ingredient.prezzo" required class="input">
+      </div>
+    </div>
+    <br>
+
+    <div class="field">
+      <label class="label">Immagine</label>
+    </div>
+
+    <div class="control">
+      <textarea class="textarea" name="immagine" [ngModel]="ingredient.immagine"></textarea>
+    </div>
+    <br>
+
+
+    <div class="field is-grouped is-pulled-right">
+
+      <div class="control">
+        <button class="button is-text" type="button" (click)="cancel()">Cancella</button>
+      </div>
+
+      <div class="control">
+        <button class="button is-success" type="submit" [disabled]="!ingredientForm.valid">Salva</button>
+      </div>
+
+    </div>
+  </form>
+
+</div>

@@ -1,0 +1,19 @@
+<div class="layout-box">
+
+  <div class="top-bar">
+
+    <h1> Lista Ingredienti </h1>
+
+    <div class="user-login-info">
+      <label class="label text-light">{{ username }}</label>
+      <button class="button is-primary border-radius-0" (click)="logout()">Logout</button>
+    </div>
+  </div>
+
+
+  <div class="page-content">
+
+    <router-outlet> </router-outlet>
+  </div>
+
+</div>

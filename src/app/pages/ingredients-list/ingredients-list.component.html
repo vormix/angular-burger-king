@@ -1,0 +1,44 @@
+<div class="main-container">
+
+
+  <div class="search-bar-container">
+
+
+    <div class="field">
+      <p class="control has-icons-left">
+        <input class="input" type="text" placeholder="Cerca">
+        <span class="icon is-small is-left">
+          <fa-icon [icon]="faSearch"> </fa-icon>
+        </span>
+      </p>
+    </div>
+  </div>
+
+
+  <div class="ingredients-list">
+
+    <!--Ci metto la carta per le ingredient richiamando il selettore -->
+    <!--RIGUARDARE       ci dovrei mettere   [link]="i"     ma se lo metto mi da errore
+ -->
+    <app-ingredient-card *ngFor="let ingredient of ingredients" [link]="ingredient.id"
+      (delete)="deleteIngredient(ingredient.id)" [nome]="ingredient.nome" [prezzo]=" ingredient.prezzo"
+      [immagine]=" ingredient.immagine"></app-ingredient-card>
+
+
+
+
+
+
+  </div>
+  <!--Bottone in blu per le ingredient -->
+  <!--GUARDARE BENE IL ROUTER LINK-->
+  <button class="button floating-add-button is-primary" routerLink="new">
+    Aggiungi Ingrediente
+
+  </button>
+
+
+
+
+
+</div>
