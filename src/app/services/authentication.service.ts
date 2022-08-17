@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { endPoint } from '../common/globals';
 
 export class User {
   constructor(
@@ -35,7 +36,7 @@ export class AuthenticationService {
     //const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
 
-    return this.httpClient.post<string>('https://localhost:7159/api/Login', {username, password}, { headers, responseType: 'text' as 'json' }).pipe(
+    return this.httpClient.post<string>(endPoint + 'api/Login', {username, password}, { headers, responseType: 'text' as 'json' }).pipe(
       map(
         token => {
           if (token != null) {
