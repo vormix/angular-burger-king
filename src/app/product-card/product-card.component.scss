@@ -1,6 +1,6 @@
 @import '../../main-styles.scss';
 
-.ingredient-card-container{
+.product-card-container{
     position:relative;
     background: white;
     border-radius: 5px;             //radius fa lo smusso sugli angoli
@@ -22,22 +22,22 @@
     }
 
 
-    .ingredient-card-content{
+    .product-card-content{
         padding:25px;
         display: flex;
 
-        .ingredient-card-img {
+        .product-card-img {
           width: 100px;
           margin-right: 15px;
         }
 
-        .ingredient-card-title{
+        .product-card-title{
             font-size:22px;
             font-weight: bold;
             color:$purple;
         }
 
-        .ingredient-card-body{
+        .product-card-body{
             position:relative;
 
             color: #555;
@@ -74,7 +74,7 @@
     height: 34px;      
     width:34px;
     background-color: $light-red;
-    background-image: url('../../assets/delete_icon.svg');    //ci metto come url il delete icon che ho preso da 'https://raw.githubusercontent.com/Devstackr/tutorial-project-resources/master/ingredientMate-Angular/delete_icon.svg'
+    background-image: url('../../assets/delete_icon.svg');    //ci metto come url il delete icon che ho preso da 'https://raw.githubusercontent.com/Devstackr/tutorial-project-resources/master/productMate-Angular/delete_icon.svg'
     background-repeat: no-repeat;  //Non far ripetere la x 
     background-position: center;            //centrare la x    
     

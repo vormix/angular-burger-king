@@ -1,23 +1,23 @@
 <!--DIV CHE RACCHIUDE TUTTO-->
-<div #container class="ingredient-card-container">
+<div #container class="product-card-container">
 
   <a [routerLink]="link">
 
-    <div class="ingredient-card-content">
+    <div class="product-card-content">
 
-      <div class="ingredient-card-img">
-        <img src="{{ immagine }}" />
+      <div class="product-card-img">
+        <img src="{{ immaginePrincipale }}" />
       </div>
 
       <div>
-        <h1 class="ingredient-card-title"> {{ nome }}</h1>
+        <h1 class="product-card-title"> {{ nome }}</h1>
         <span>{{ prezzo | currency: 'EUR' }}</span>
       </div>
 
       <!--Titolo della carta-->
 
       <!--Corpo della carta-->
-      <div #bodyText class="ingredient-card-body">
+      <div #bodyText class="product-card-body">
         <!--TESTO testo della carta-->
 
 

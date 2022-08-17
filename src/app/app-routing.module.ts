@@ -5,6 +5,8 @@ import { IngredientDetailsComponent } from './pages/ingredient-details/ingredien
 import { IngredientsListComponent } from './pages/ingredients-list/ingredients-list.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuardService } from './services/auth.activate.service';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+import { ProductsListComponent } from './pages/products-list/products-list.component';
 
 
 const routes: Routes = [
@@ -13,7 +15,17 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path:'',
+    path:'products',
+    component: MainLayoutComponent ,
+    canActivate: [AuthGuardService],
+    children:[
+      {path:'',component:ProductsListComponent},
+      {path:'new',component:ProductDetailsComponent},
+      {path:':id',component:ProductDetailsComponent}
+    ]
+  },
+  {
+    path:'ingredients',
     component: MainLayoutComponent ,
     canActivate: [AuthGuardService],
     children:[

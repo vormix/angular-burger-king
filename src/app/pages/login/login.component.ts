@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
         x => {
           this.errorMessage = '';
           console.log("dopo subscribe authenticate", x);
-          this.router.navigateByUrl('/');
+          this.router.navigateByUrl('/products');
         },
         error => {
           console.log('oops', error);

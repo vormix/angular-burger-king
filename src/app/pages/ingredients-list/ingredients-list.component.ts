@@ -12,7 +12,7 @@ import { IngredientService } from 'src/app/services/ingredient.service';
 })
 export class IngredientsListComponent implements OnInit {
  
- 
+  allIngredients: Ingredient[] = [];
   ingredients:Ingredient[]= new Array<Ingredient>();
 
   
@@ -28,6 +28,7 @@ export class IngredientsListComponent implements OnInit {
     // this.ingredients=
     this.ingredientsService.getAll().subscribe(data => {
       this.ingredients = data as Ingredient[];      
+      this.allIngredients = data as Ingredient[];      
     });
   }
 
@@ -39,4 +40,10 @@ export class IngredientsListComponent implements OnInit {
   }
   
 
+  filtra(e: any) {
+    console.log(e);
+    let searchTerm: string = e.target.value;
+
+    this.ingredients = this.allIngredients.filter(x => x.nome.includes(searchTerm) || x.prezzo.toString().includes(searchTerm));
+  }
 }

@@ -1,9 +1,9 @@
-<!--Pagina per aggiungere delle ingredient-->
+<!--Pagina per aggiungere delle product-->
 
 <div class="form-container">
 
   <!--CREO UN FORM-->
-  <form #ingredientForm="ngForm" (ngSubmit)="onSubmit(ingredientForm)">
+  <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
 
 
 
@@ -11,8 +11,8 @@
     <div class="field">
       <label class="label"> Nome</label>
       <div class="control">
-        <input type="text" name="nome" [ngModel]="ingredient.nome" required class="input">
-        <!-- <div>{{ ingredient.nome }}</div> -->
+        <input type="text" name="nome" [ngModel]="product.nome" required class="input">
+        <!-- <div>{{ product.nome }}</div> -->
       </div>
     </div>
     <br>
@@ -20,7 +20,7 @@
     <div class="field">
       <label class="label"> Prezzo</label>
       <div class="control">
-        <input type="text" name="prezzo" [ngModel]="ingredient.prezzo" required class="input">
+        <input type="text" name="prezzo" [ngModel]="product.prezzo" required class="input">
       </div>
     </div>
     <br>
@@ -28,9 +28,9 @@
     <div class="field">
       <label class="label">Immagine</label>
       <div class="control">
-        <input type="text" name="immagine" [(ngModel)]="ingredient.immagine" class="input" />
+        <input type="text" name="immaginePrincipale" [(ngModel)]="product.immaginePrincipale" class="input" />
       </div>
-      <img src="{{ ingredient.immagine }}" />
+      <img src="{{ product.immaginePrincipale }}" />
     </div>
 
     <br>
@@ -43,7 +43,7 @@
       </div>
 
       <div class="control">
-        <button class="button is-success" type="submit" [disabled]="!ingredientForm.valid">Salva</button>
+        <button class="button is-success" type="submit" [disabled]="!productForm.valid">Salva</button>
       </div>
 
     </div>

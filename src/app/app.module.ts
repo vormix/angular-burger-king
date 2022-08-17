@@ -18,14 +18,21 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './services/httpinterceptor.service';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuardService } from './services/auth.activate.service';
+import { ProductsListComponent } from './pages/products-list/products-list.component';
+import { ProductCardComponent } from './product-card/product-card.component';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    IngredientsListComponent,
+    
     MainLayoutComponent,
+    IngredientsListComponent,
     IngredientCardComponent,
     IngredientDetailsComponent,
+    ProductsListComponent,
+    ProductCardComponent,
+    ProductDetailsComponent,
     LoginComponent,
 
     

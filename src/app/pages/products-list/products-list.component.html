@@ -15,14 +15,14 @@
   </div>
 
 
-  <div class="ingredients-list">
+  <div class="products-list">
 
-    <!--Ci metto la carta per le ingredient richiamando il selettore -->
+    <!--Ci metto la carta per le product richiamando il selettore -->
     <!--RIGUARDARE       ci dovrei mettere   [link]="i"     ma se lo metto mi da errore
  -->
-    <app-ingredient-card *ngFor="let ingredient of ingredients" [link]="ingredient.id"
-      (delete)="deleteIngredient(ingredient.id)" [nome]="ingredient.nome" [prezzo]=" ingredient.prezzo"
-      [immagine]=" ingredient.immagine"></app-ingredient-card>
+    <app-product-card *ngFor="let product of products" [link]="product.id" (delete)="deleteProduct(product.id)"
+      [nome]="product.nome" [prezzo]=" product.prezzo" [immaginePrincipale]=" product.immaginePrincipale">
+    </app-product-card>
 
 
 
@@ -30,10 +30,10 @@
 
 
   </div>
-  <!--Bottone in blu per le ingredient -->
+  <!--Bottone in blu per le product -->
   <!--GUARDARE BENE IL ROUTER LINK-->
   <button class="button floating-add-button is-primary" routerLink="new">
-    Aggiungi Ingrediente
+    Aggiungi Producte
 
   </button>
 
