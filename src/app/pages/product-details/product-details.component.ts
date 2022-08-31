@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Ingredient } from 'src/app/models/ingredient.model';
 import { Product } from 'src/app/models/product.model';
+import { IngredientService } from 'src/app/services/ingredient.service';
 import { ProductService } from 'src/app/services/product.service';
 
 
@@ -20,8 +22,12 @@ export class ProductDetailsComponent implements OnInit {
   productId!:number;
   new!:boolean;
 
+  ingredients!: Ingredient[];
+  prodIngredients: Ingredient[] = [];
+
   constructor(
     private productsService:ProductService,
+    private ingredientsService:IngredientService,
     private router:Router,
     private route:ActivatedRoute) { }
 
@@ -39,14 +45,37 @@ export class ProductDetailsComponent implements OnInit {
         });
         this.productId=params.id;
         this.new=false;
+
+        this.productsService.getIngredients(params.id).subscribe(ingredients => {
+          this.prodIngredients= ingredients as Ingredient[];
+        });
       }
 
       else{
         this.new=true;
       }
+
+      this.ingredientsService.getAll().subscribe(ingredients => {
+        this.ingredients= ingredients as Ingredient[];
+        this.ingredients.sort((a, b) => a.nome.localeCompare(b.nome));
+      });
     })
 
    }
+
+  addIngredient() {
+    let selectBox : any = document.getElementById('ingredients');
+    let option = selectBox.options[selectBox.options.selectedIndex];
+    let ingredientId = option.value;
+
+    let ingredient: any = this.ingredients.find(x => x.id == ingredientId);
+    if (!this.prodIngredients.includes(ingredient)) this.prodIngredients.push(ingredient);
+  }
+
+  removeIngredient(i: Ingredient) {
+    let index = this.prodIngredients.indexOf(i);
+    this.prodIngredients.splice(index, 1);
+  }
 
   onSubmit(form:NgForm){
 /*     //STAMPO A CONSOLE IL FORM 
@@ -56,12 +85,12 @@ export class ProductDetailsComponent implements OnInit {
       //allora dobbiamo salvare la nota
        //SALVO LA NOTA
       this.productsService.add(form.value).subscribe(result => {
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/products');
       });
     
     }else {
       this.productsService.update(this.productId,form.value).subscribe(result => {
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/products');
       });
       // this.ingredientsService.update(this.ingredientId,form.value.nome, form.value.prezzo, form.value.immagine);
       

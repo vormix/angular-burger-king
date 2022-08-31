@@ -46,3 +46,12 @@
     gap: 20px;
     align-items: center;
 }
+
+.links {
+  display: flex;
+  gap: 30px;
+  margin-right: 60px;
+  a {
+    color: white;
+  }
+}

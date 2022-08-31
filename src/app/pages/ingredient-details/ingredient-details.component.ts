@@ -56,12 +56,12 @@ export class IngredientDetailsComponent implements OnInit {
       //allora dobbiamo salvare la nota
        //SALVO LA NOTA
       this.ingredientsService.add(form.value).subscribe(result => {
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/ingredients');
       });
     
     }else {
       this.ingredientsService.update(this.ingredientId,form.value).subscribe(result => {
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/ingredients');
       });
       // this.ingredientsService.update(this.ingredientId,form.value.nome, form.value.prezzo, form.value.immagine);
       

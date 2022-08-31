@@ -45,6 +45,6 @@ export class ProductsListComponent implements OnInit {
     console.log(e);
     let searchTerm: string = e.target.value;
 
-    this.products = this.allProducts.filter(x => x.nome.includes(searchTerm) || x.prezzo.toString().includes(searchTerm));
+    this.products = this.allProducts.filter(x => x.nome.toLowerCase().includes(searchTerm.toLowerCase()) || x.prezzo.toString().includes(searchTerm.toLowerCase()));
   }
 }

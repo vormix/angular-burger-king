@@ -35,6 +35,35 @@
 
     <br>
 
+    <div class="field">
+      <label class="label">Ingredienti</label>
+      <div class="control">
+        <select id="ingredients" class="input">
+          <option *ngFor="let i of ingredients" value="{{ i.id }}">{{ i.nome }}</option>
+        </select>
+        <button class="button" type="button" (click)="addIngredient()">Add Ingredient</button>
+      </div>
+    </div>
+    <div>
+      <table class="table is-bordered">
+        <thead>
+          <tr>
+            <th>Ingrediente</th>
+            <th>Azioni</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let i of prodIngredients">
+            <td>{{ i.nome }}</td>
+            <td><button (click)="removeIngredient(i)" type="button" class="button is-danger is-small">&times;</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <br>
+
 
     <div class="field is-grouped is-pulled-right">
 

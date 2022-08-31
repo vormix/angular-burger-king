@@ -72,6 +72,13 @@ delete(id:number){
 
 }
 
+getIngredients(productId:number){
+  // this.products.splice(id,1);
+  console.log('getIngredients', productId);
+  return this.http.get(endPoint + 'api/products/'+productId + '/ingredients');
+
+}
+
 
 
 }
