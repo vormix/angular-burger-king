@@ -55,7 +55,8 @@
         <tbody>
           <tr *ngFor="let i of prodIngredients">
             <td>{{ i.nome }}</td>
-            <td><button (click)="removeIngredient(i)" type="button" class="button is-danger is-small">&times;</button>
+            <td>
+              <button (click)="removeIngredient(i)" type="button" class="button is-danger is-small">&times;</button>
             </td>
           </tr>
         </tbody>

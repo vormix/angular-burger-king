@@ -80,17 +80,23 @@ export class ProductDetailsComponent implements OnInit {
   onSubmit(form:NgForm){
 /*     //STAMPO A CONSOLE IL FORM 
     console.log(form) */;
-
+    //console.log(form.value); return;
     if(this.new){
       //allora dobbiamo salvare la nota
        //SALVO LA NOTA
-      this.productsService.add(form.value).subscribe(result => {
-        this.router.navigateByUrl('/products');
+      this.productsService.add(form.value).subscribe((newProduct: Product) => {
+        
+          this.productsService.addIngredientsOfProduct(newProduct, this.prodIngredients).subscribe(x => {
+            this.router.navigateByUrl('/products');
+          });        
+          
       });
     
     }else {
-      this.productsService.update(this.productId,form.value).subscribe(result => {
-        this.router.navigateByUrl('/products');
+      this.productsService.update(this.productId,form.value).subscribe((newProduct: Product) => {
+        this.productsService.addIngredientsOfProduct(newProduct, this.prodIngredients).subscribe(x => {
+            this.router.navigateByUrl('/products');
+          });
       });
       // this.ingredientsService.update(this.ingredientId,form.value.nome, form.value.prezzo, form.value.immagine);
       

@@ -6,6 +6,7 @@ import { Product } from '../models/product.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { endPoint } from '../common/globals';
+import { Ingredient } from '../models/ingredient.model';
 
 
 @Injectable({
@@ -47,7 +48,7 @@ add(product: Product){
   // let headers = new HttpHeaders();
   // headers = headers.set('Content-Type', 'application/json'); // 'Access-Control-Allow-Origin':'*'
 
-  return this.http.post(endPoint + 'api/products', product);
+  return this.http.post<Product>(endPoint + 'api/products', product);
 // let newLength =this.products.push(product);
 // let index= newLength -1;
 // return index;
@@ -58,7 +59,7 @@ add(product: Product){
 update(id:number, product: Product){
 
   product.id = id;
-  return this.http.put(endPoint + 'api/products/'+id, product);
+  return this.http.put<Product>(endPoint + 'api/products/'+id, product);
   // let product = this.products[id];
 
  
@@ -77,6 +78,10 @@ getIngredients(productId:number){
   console.log('getIngredients', productId);
   return this.http.get(endPoint + 'api/products/'+productId + '/ingredients');
 
+}
+
+addIngredientsOfProduct(product: Product, ingredients: Ingredient[]) {
+  return this.http.post(endPoint + `api/products/${product.id}/ingredients`, { ingredients: ingredients } );
 }
 
 
