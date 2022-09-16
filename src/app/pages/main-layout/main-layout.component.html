@@ -1,22 +1,51 @@
 <div class="layout-box">
 
-  <div class="top-bar">
 
-    <h1>Ng Burger King </h1>
 
-    <ul class="links">
-      <li><a routerLink="/ingredients">Ingredienti</a></li>
-      <li><a routerLink="/products">Prodotti</a></li>
-    </ul>
 
-    <div class="user-login-info">
-      <label class="label text-light">{{ username }}</label>
-      <button class="button is-primary border-radius-0" (click)="logout()">Logout</button>
+  <nav class="navbar is-primary is-fixed-top " role="navigation" aria-label="main navigation">
+    <div class="container animate__animated animate__fadeIn animate__faster">
+      <div class="navbar-brand">
+        <a class="navbar-item" routerLink="/ingredients" (click)="toggleOpen()">
+          Ng Burger King
+        </a>
+
+        <a (click)="toggleOpen()" role="button" class="navbar-burger" [ngClass]="{'is-active' : isBurgerOpen }"
+          aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu animate__animated animate__fadeIn animate__faster"
+        [ngClass]="{'is-active' : isBurgerOpen }">
+        <div class="navbar-start">
+
+          <a class="navbar-item" routerLink="/ingredients" (click)="toggleOpen()">Ingredienti</a>
+          <a class="navbar-item" routerLink="/products" (click)="toggleOpen()">Prodotti</a>
+
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <strong class="mr-3">
+                {{ username }}
+              </strong>
+              <button class="button is-link" (click)="logout()">
+                <strong>Logout</strong>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+
+  </nav>
 
 
-  <div class="page-content">
+  <div class="page-content mt-5">
     <router-outlet></router-outlet>
   </div>
 

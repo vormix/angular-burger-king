@@ -9,6 +9,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class MainLayoutComponent implements OnInit {
 
+  isBurgerOpen: boolean = false;
   public username: string | null = '';
 
   constructor(private authService: AuthenticationService, private router:Router) { 
@@ -22,5 +23,11 @@ export class MainLayoutComponent implements OnInit {
     this.authService.logOut();
     this.router.navigateByUrl('/login');
   }
+
+  toggleOpen() {
+    console.log('toggle isBurgerOpen'); 
+    this.isBurgerOpen = !this.isBurgerOpen;
+  }
+
 
 }
