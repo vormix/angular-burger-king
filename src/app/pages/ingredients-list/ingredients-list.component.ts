@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import{faSearch} from '@fortawesome/free-solid-svg-icons';
+// import{faSearch} from '@fortawesome/free-solid-svg-icons';
 import { Ingredient } from 'src/app/models/ingredient.model';
 import { IngredientService } from 'src/app/services/ingredient.service';
 
@@ -23,7 +23,7 @@ export class IngredientsListComponent implements OnInit {
 
 
 //fontawesome 
-  faSearch=faSearch;
+  // faSearch=faSearch;
   ngOnInit(): void {
     // this.ingredients=
     this.ingredientsService.getAll().subscribe(data => {

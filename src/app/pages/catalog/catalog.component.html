@@ -1,0 +1,27 @@
+<div class="main-container">
+
+  <!-- <h2>Products List</h2> -->
+
+  <div class="search-bar-container">
+
+
+    <div class="field">
+      <p class="control has-icons-left">
+        <input (keyup)="filtra($event)" class="input" type="text" placeholder="Cerca">
+        <span class="icon is-small is-left">
+          <!-- <fa-icon [icon]="faSearch"> </fa-icon> -->
+          <i class="fa fa-search"></i>
+        </span>
+      </p>
+    </div>
+  </div>
+
+
+  <div class="products-list">
+
+    <app-product-card-catalog *ngFor="let product of products" (addToCart)="OnAddToCart($event)" [product]="product">
+    </app-product-card-catalog>
+
+  </div>
+
+</div>

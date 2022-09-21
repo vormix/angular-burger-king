@@ -7,6 +7,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { AuthGuardService } from './services/auth.activate.service';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { ProductsListComponent } from './pages/products-list/products-list.component';
+import { CatalogComponent } from './pages/catalog/catalog.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,14 @@ const routes: Routes = [
       {path:'',component:ProductsListComponent},
       {path:'new',component:ProductDetailsComponent},
       {path:':id',component:ProductDetailsComponent}
+    ]
+  },
+  {
+    path:'catalog',
+    component: MainLayoutComponent ,
+    canActivate: [AuthGuardService],
+    children:[
+      {path:'',component:CatalogComponent}
     ]
   },
   {

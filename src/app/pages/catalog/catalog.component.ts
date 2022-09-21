@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+// import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-// import{faSearch} from '@fortawesome/free-solid-svg-icons';
 import { Product } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 
-
 @Component({
-  selector: 'app-products-list',
-  templateUrl: './products-list.component.html',
-  styleUrls: ['./products-list.component.scss']
+  selector: 'app-catalog',
+  templateUrl: './catalog.component.html',
+  styleUrls: ['./catalog.component.scss']
 })
-export class ProductsListComponent implements OnInit {
- 
+export class CatalogComponent implements OnInit {
+
   allProducts: Product[] = [];
   products:Product[]= new Array<Product>();
   deletingProductId: number = 0;
@@ -65,4 +64,9 @@ export class ProductsListComponent implements OnInit {
 
     this.products = this.allProducts.filter(x => x.nome.toLowerCase().includes(searchTerm.toLowerCase()) || x.prezzo.toString().includes(searchTerm.toLowerCase()));
   }
+
+  OnAddToCart(product: Product) {
+    console.log ('Aggiunto al carrello', product);
+  }
+
 }

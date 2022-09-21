@@ -1,0 +1,44 @@
+<!--DIV CHE RACCHIUDE TUTTO-->
+<div #container class="product-card-container animate__animated animate__fadeInLeft animate__fast">
+
+  <div>
+
+    <div class="product-card-content">
+
+      <div class="product-card-img">
+        <img src="{{ product?.immaginePrincipale }}" />
+      </div>
+
+      <div>
+        <h1 class="product-card-title"> {{ product?.nome }}</h1>
+        <span>{{ product?.prezzo | currency: 'EUR' }}</span>
+      </div>
+
+      <!--Titolo della carta-->
+
+      <!--Corpo della carta-->
+      <div #bodyText class="product-card-body">
+        <!--TESTO testo della carta-->
+
+
+        <div #truncator class="fade-out-truncation">
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!--DIV PER IL TITOLO-->
+
+
+  <div class="x-button button is-info" (click)="onClick()">
+    <i class="fa fa-shopping-cart"></i>
+  </div>
+
+
+
+
+
+</div>
