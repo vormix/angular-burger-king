@@ -1,5 +1,6 @@
 <!--DIV CHE RACCHIUDE TUTTO-->
-<div #container class="product-card-container animate__animated animate__fadeInLeft animate__slow">
+<div #container class="product-card-container animate__animated animate__fadeInLeft animate__fast"
+  [ngClass]="{ 'animate__fadeOutRight': isDeleting }">
 
   <a [routerLink]="link">
 

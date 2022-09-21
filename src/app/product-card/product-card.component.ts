@@ -13,6 +13,8 @@ export class ProductCardComponent implements OnInit {
  @Input()prezzo!:number;
  @Input()immaginePrincipale!:string;
  @Input()link!:any;
+ @Input('isDeleting') isDeleting :boolean = false;
+ 
 
  @Output('delete') deleteEvent:EventEmitter<void>=new EventEmitter<void>();
 

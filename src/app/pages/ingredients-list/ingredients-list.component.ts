@@ -14,7 +14,7 @@ export class IngredientsListComponent implements OnInit {
  
   allIngredients: Ingredient[] = [];
   ingredients:Ingredient[]= new Array<Ingredient>();
-
+  deletingIngredientId: number = 0;
   
   constructor(private ingredientsService:IngredientService) {
     
@@ -33,8 +33,22 @@ export class IngredientsListComponent implements OnInit {
   }
 
   deleteIngredient(id:number){
-    this.ingredientsService.delete(id).subscribe(x => {
-      alert('deleted');
+    this.ingredientsService.delete(id).subscribe(deletedIngredient => {
+      if (deletedIngredient.id) {
+        this.deletingIngredientId = id;
+
+        setTimeout(() => {
+          let p: any = this.allIngredients.find(x => x.id == deletedIngredient.id);
+          let index = this.allIngredients.indexOf(p);
+          this.allIngredients.splice(index, 1);
+  
+          // p = this.ingredients.find(x => x.id == deletedIngredient.id);
+          // index = this.ingredients.indexOf(p);
+          // this.ingredients.splice(index, 1);
+
+        }, 800);
+
+      }
     });
 
   }

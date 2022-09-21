@@ -1,6 +1,6 @@
 <div class="main-container">
 
-  <h2>Ingredients List</h2>
+  <!-- <h2>Ingredients List</h2> -->
 
   <div class="search-bar-container">
 
@@ -23,7 +23,7 @@
  -->
     <app-ingredient-card *ngFor="let ingredient of ingredients" [link]="ingredient.id"
       (delete)="deleteIngredient(ingredient.id)" [nome]="ingredient.nome" [prezzo]=" ingredient.prezzo"
-      [immagine]=" ingredient.immagine"></app-ingredient-card>
+      [immagine]=" ingredient.immagine" [isDeleting]="ingredient.id == deletingIngredientId"></app-ingredient-card>
 
 
 
@@ -33,8 +33,8 @@
   </div>
   <!--Bottone in blu per le ingredient -->
   <!--GUARDARE BENE IL ROUTER LINK-->
-  <button class="button floating-add-button is-primary" routerLink="new">
-    Aggiungi Ingrediente
+  <button class="button floating-add-button is-link" routerLink="new">
+    Aggiungi un Ingrediente
 
   </button>
 

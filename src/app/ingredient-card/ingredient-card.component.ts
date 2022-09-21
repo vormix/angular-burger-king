@@ -13,6 +13,7 @@ export class IngredientCardComponent implements OnInit {
  @Input()prezzo!:number;
  @Input()immagine!:string;
  @Input()link!:any;
+ @Input('isDeleting') isDeleting :boolean = false;
 
  @Output('delete') deleteEvent:EventEmitter<void>=new EventEmitter<void>();
 

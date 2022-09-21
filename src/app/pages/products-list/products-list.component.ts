@@ -14,7 +14,7 @@ export class ProductsListComponent implements OnInit {
  
   allProducts: Product[] = [];
   products:Product[]= new Array<Product>();
-
+  deletingProductId: number = 0;
   
   constructor(private productsService:ProductService) {
     
@@ -34,8 +34,26 @@ export class ProductsListComponent implements OnInit {
   }
 
   deleteProduct(id:number){
-    this.productsService.delete(id).subscribe(x => {
-      alert('deleted');
+    
+
+    this.productsService.delete(id).subscribe(deletedProduct => {
+      if (deletedProduct.id) {
+        this.deletingProductId = id;
+
+        setTimeout(() => {
+          let p: any = this.allProducts.find(x => x.id == deletedProduct.id);
+          let index = this.allProducts.indexOf(p);
+          this.allProducts.splice(index, 1);
+  
+          // p = this.products.find(x => x.id == deletedProduct.id);
+          // index = this.products.indexOf(p);
+          // this.products.splice(index, 1);
+
+        }, 800);
+
+      }
+      // console.log(x);
+      // alert('deleted');
     });
 
   }

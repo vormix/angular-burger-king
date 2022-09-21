@@ -65,10 +65,10 @@ update(id:number, ingredient: Ingredient){
 }
 
 
-delete(id:number){
+delete(id:number): Observable<Ingredient>{
   // this.ingredients.splice(id,1);
   console.log('delete', id);
-  return this.http.delete(endPoint + 'api/ingredients/'+id);
+  return this.http.delete<Ingredient>(endPoint + 'api/ingredients/'+id);
 
 }
 

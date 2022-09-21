@@ -1,6 +1,6 @@
 <div class="main-container">
 
-  <h2>Products List</h2>
+  <!-- <h2>Products List</h2> -->
 
   <div class="search-bar-container">
 
@@ -22,7 +22,8 @@
     <!--RIGUARDARE       ci dovrei mettere   [link]="i"     ma se lo metto mi da errore
  -->
     <app-product-card *ngFor="let product of products" [link]="product.id" (delete)="deleteProduct(product.id)"
-      [nome]="product.nome" [prezzo]=" product.prezzo" [immaginePrincipale]=" product.immaginePrincipale">
+      [nome]="product.nome" [prezzo]=" product.prezzo" [immaginePrincipale]=" product.immaginePrincipale"
+      [isDeleting]="product.id == deletingProductId">
     </app-product-card>
 
 
@@ -34,7 +35,7 @@
   <!--Bottone in blu per le product -->
   <!--GUARDARE BENE IL ROUTER LINK-->
   <button class="button floating-add-button is-link" routerLink="new">
-    Aggiungi Producte
+    Aggiungi un Prodotto
 
   </button>
 
