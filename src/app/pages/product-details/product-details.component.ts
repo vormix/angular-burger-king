@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Ingredient } from 'src/app/models/ingredient.model';
+import { ProductIngredient } from 'src/app/models/product-ingredient.model';
 import { Product } from 'src/app/models/product.model';
 import { IngredientService } from 'src/app/services/ingredient.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -23,7 +24,8 @@ export class ProductDetailsComponent implements OnInit {
   new!:boolean;
 
   ingredients!: Ingredient[];
-  prodIngredients: Ingredient[] = [];
+  prodIngredients: ProductIngredient[] = [];
+  ingredientsOfProduct: Ingredient[] = [];
 
   constructor(
     private productsService:ProductService,
@@ -46,8 +48,11 @@ export class ProductDetailsComponent implements OnInit {
         this.productId=params.id;
         this.new=false;
 
-        this.productsService.getIngredients(params.id).subscribe(ingredients => {
-          this.prodIngredients= ingredients as Ingredient[];
+        this.productsService.getIngredients(params.id).subscribe((ingredients: any) => {
+          // this.prodIngredients= ingredients.map((i:any) => i.idIngredienteNavigation) as Ingredient[];
+          this.prodIngredients = ingredients as ProductIngredient[];
+          this.ingredientsOfProduct= ingredients.map((i:any) => i.idIngredienteNavigation) as Ingredient[];
+
         });
       }
 
@@ -69,17 +74,33 @@ export class ProductDetailsComponent implements OnInit {
     let ingredientId = option.value;
 
     let ingredient: any = this.ingredients.find(x => x.id == ingredientId);
-    if (!this.prodIngredients.includes(ingredient)) this.prodIngredients.push(ingredient);
+    let oldIngredient: any = this.ingredientsOfProduct.find(x => x.id == ingredientId);
+    if (oldIngredient == null) {
+      this.ingredientsOfProduct.push(ingredient);
+
+      let prodIng = new ProductIngredient();
+      prodIng.idIngrediente = ingredientId;
+      prodIng.idProdotto = this.product.id;
+      prodIng.idIngredienteNavigation = ingredient;
+      this.prodIngredients.push(prodIng);
+    }
   }
 
   removeIngredient(i: Ingredient) {
-    let index = this.prodIngredients.indexOf(i);
+    let index = this.ingredientsOfProduct.indexOf(i);
+    this.ingredientsOfProduct.splice(index, 1);
+
+    let prodIng = this.prodIngredients.find(pi => pi.idIngrediente == i.id);
+    if (prodIng == null) return;
+    index = this.prodIngredients.indexOf(prodIng);
     this.prodIngredients.splice(index, 1);
   }
 
   onSubmit(form:NgForm){
 /*     //STAMPO A CONSOLE IL FORM 
     console.log(form) */;
+    //  debugger;
+    // return;
     //console.log(form.value); return;
     if(this.new){
       //allora dobbiamo salvare la nota
@@ -111,6 +132,12 @@ export class ProductDetailsComponent implements OnInit {
 
     this.router.navigateByUrl('/');
 
+  }
+
+  setQuantita(prodIngredient: ProductIngredient, value: string) {
+    let prodIng = this.prodIngredients.find(x => x.idIngrediente == prodIngredient.idIngrediente);
+    if (prodIng == null) return;
+    prodIng.quantita = Number(value);
   }
 
 }

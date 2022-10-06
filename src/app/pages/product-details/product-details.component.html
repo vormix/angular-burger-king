@@ -49,14 +49,24 @@
         <thead>
           <tr>
             <th>Ingrediente</th>
+            <th>Qta</th>
+            <th>Rim</th>
             <th>Azioni</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let i of prodIngredients">
-            <td>{{ i.nome }}</td>
+            <td>{{ i.idIngredienteNavigation.nome }}</td>
             <td>
-              <button (click)="removeIngredient(i)" type="button" class="button is-danger is-small">&times;</button>
+              <input #quantita type="number" min="1" style="width:30px" name="quantita" [value]="i.quantita"
+                (change)="setQuantita(i,quantita.value)">
+            </td>
+            <td>
+              <input type="checkbox" name="rimovibile" [checked]="i.rimovibile" (change)="i.rimovibile = !i.rimovibile">
+            </td>
+            <td>
+              <button (click)="removeIngredient(i.idIngredienteNavigation)" type="button"
+                class="button is-danger is-small">&times;</button>
             </td>
           </tr>
         </tbody>

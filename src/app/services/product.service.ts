@@ -7,6 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { endPoint } from '../common/globals';
 import { Ingredient } from '../models/ingredient.model';
+import { ProductIngredient } from '../models/product-ingredient.model';
 
 
 @Injectable({
@@ -80,7 +81,7 @@ getIngredients(productId:number){
 
 }
 
-addIngredientsOfProduct(product: Product, ingredients: Ingredient[]) {
+addIngredientsOfProduct(product: Product, ingredients: ProductIngredient[]) {
   return this.http.post(endPoint + `api/products/${product.id}/ingredients`, { ingredients: ingredients } );
 }
 
