@@ -7,7 +7,7 @@ export class ProductIngredient{
     public idIngrediente!: number;
     public rimovibile!: boolean;
     public quantita!: number;
-    public idIngredienteNavigation!: Ingredient;
+    public ingrediente!: Ingredient;
 
     constructor() {
       this.rimovibile=true;

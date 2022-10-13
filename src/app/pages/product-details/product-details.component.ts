@@ -49,9 +49,9 @@ export class ProductDetailsComponent implements OnInit {
         this.new=false;
 
         this.productsService.getIngredients(params.id).subscribe((ingredients: any) => {
-          // this.prodIngredients= ingredients.map((i:any) => i.idIngredienteNavigation) as Ingredient[];
+          // this.prodIngredients= ingredients.map((i:any) => i.ingrediente) as Ingredient[];
           this.prodIngredients = ingredients as ProductIngredient[];
-          this.ingredientsOfProduct= ingredients.map((i:any) => i.idIngredienteNavigation) as Ingredient[];
+          this.ingredientsOfProduct= ingredients.map((i:any) => i.ingrediente) as Ingredient[];
 
         });
       }
@@ -81,7 +81,7 @@ export class ProductDetailsComponent implements OnInit {
       let prodIng = new ProductIngredient();
       prodIng.idIngrediente = ingredientId;
       prodIng.idProdotto = this.product.id;
-      prodIng.idIngredienteNavigation = ingredient;
+      prodIng.ingrediente = ingredient;
       this.prodIngredients.push(prodIng);
     }
   }
