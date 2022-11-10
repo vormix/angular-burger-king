@@ -24,6 +24,10 @@ export class AuthenticationService {
     return sessionStorage.getItem('username');
   }
 
+  get userId(): string {
+    return sessionStorage.getItem('userId') || '';
+  }
+
   get token() {
     return sessionStorage.getItem('token');
   }
@@ -36,14 +40,16 @@ export class AuthenticationService {
     //const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
 
-    return this.httpClient.post<string>(endPoint + 'api/Login', {username, password}, { headers, responseType: 'text' as 'json' }).pipe(
+    return this.httpClient.post<any>(endPoint + 'api/Login', {username, password}, { headers, responseType: 'text' as 'json' }).pipe(
       map(
-        token => {
-          if (token != null) {
-            sessionStorage.setItem('token', token);
+        response => {
+          if (response != null) {
+            response = JSON.parse(response);
+            sessionStorage.setItem('token', response.token);
             sessionStorage.setItem('username', username);
+            sessionStorage.setItem('userId', response.id.toString());
           }
-          return token;
+          return response; 
         }
       )
 
