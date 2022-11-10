@@ -23,6 +23,8 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductCardCatalogComponent } from './product-card-catalog/product-card-catalog.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
+import { CartComponent } from './pages/cart/cart.component';
+import { CartItemComponent } from './cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { CatalogComponent } from './pages/catalog/catalog.component';
     ProductDetailsComponent,
     LoginComponent,
     CatalogComponent,
-
+    CartComponent,
+    CartItemComponent
     
   ],
   imports: [

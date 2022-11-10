@@ -1,0 +1,59 @@
+<!--DIV CHE RACCHIUDE TUTTO-->
+<div #container class="cart-item-container animate__animated animate__fadeInLeft animate__fast"
+  [ngClass]="{ 'animate__fadeOutRight': isDeleting }">
+
+  <a [routerLink]="link">
+
+    <div class="cart-item-content">
+
+      <div class="cart-item-img">
+        <img src="{{ immaginePrincipale }}" />
+      </div>
+
+      <div>
+        <h1 class="cart-item-title"> {{ nome }}</h1>
+        <span>{{ prezzo | currency: 'EUR' }}</span>
+      </div>
+
+      <!--Titolo della carta-->
+
+      <!--Corpo della carta-->
+      <div #bodyText class="cart-item-body">
+        <!--TESTO testo della carta-->
+
+
+        <div #truncator class="fade-out-truncation">
+
+        </div>
+
+      </div>
+
+    </div>
+  </a>
+
+  <div class="ingredienti">
+
+    <div class="ingrediente" *ngFor="let i of ingredienti">
+      <img [src]="i.ingrediente.immagine">
+      <div>
+        <div class="ingrediente_nome">{{ i.ingrediente.nome }}</div>
+        <div class="ingrediente_quantita">{{
+          i.quantita }}
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!--DIV PER IL TITOLO-->
+
+
+  <div class="x-button" (click)="onXButtonClick()">
+
+
+  </div>
+
+
+
+
+
+</div>

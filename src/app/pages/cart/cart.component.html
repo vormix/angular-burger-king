@@ -1,0 +1,18 @@
+<div class="main-container">
+
+  <div class="products-list">
+
+    <!--Ci metto la carta per le product richiamando il selettore -->
+    <!--RIGUARDARE       ci dovrei mettere   [link]="i"     ma se lo metto mi da errore
+ -->
+    <app-cart-item *ngFor="let product of cartProducts" [link]="product?.prodotto.id"
+      (delete)="deleteProduct(product.id)" [nome]="product?.prodotto.nome" [prezzo]=" product?.prodotto.prezzo"
+      [immaginePrincipale]=" product?.prodotto.immaginePrincipale"
+      [isDeleting]="product?.prodotto.id == deletingProductId" [ingredienti]="product?.dettagliProdottiCarrello">
+    </app-cart-item>
+
+
+  </div>
+
+
+</div>

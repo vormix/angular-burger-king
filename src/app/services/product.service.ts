@@ -85,6 +85,11 @@ addIngredientsOfProduct(product: Product, ingredients: ProductIngredient[]) {
   return this.http.post(endPoint + `api/products/${product.id}/ingredients`, { ingredients: ingredients } );
 }
 
+getCart(cartId:number): any{
+  // this.products.splice(id,1);
+  console.log('getCart', cartId);
+  return this.http.get(endPoint + 'api/cart/GetCart/'+cartId );
 
+}
 
 }
