@@ -51,6 +51,7 @@ export class ProductDetailsComponent implements OnInit {
         this.productsService.getIngredients(params.id).subscribe((ingredients: any) => {
           // this.prodIngredients= ingredients.map((i:any) => i.ingrediente) as Ingredient[];
           this.prodIngredients = ingredients as ProductIngredient[];
+          console.log(this.prodIngredients);
           this.ingredientsOfProduct= ingredients.map((i:any) => i.ingrediente) as Ingredient[];
 
         });
@@ -90,10 +91,10 @@ export class ProductDetailsComponent implements OnInit {
     let index = this.ingredientsOfProduct.indexOf(i);
     this.ingredientsOfProduct.splice(index, 1);
 
-    let prodIng = this.prodIngredients.find(pi => pi.idIngrediente == i.id);
-    if (prodIng == null) return;
-    index = this.prodIngredients.indexOf(prodIng);
-    this.prodIngredients.splice(index, 1);
+    // let prodIng = this.prodIngredients.find(pi => pi.idIngrediente == i.id);
+    // if (prodIng == null) return;
+    // index = this.prodIngredients.indexOf(prodIng);
+    // this.prodIngredients.splice(index, 1);
   }
 
   onSubmit(form:NgForm){

@@ -1,37 +1,24 @@
 <!--DIV CHE RACCHIUDE TUTTO-->
 <div #container class="cart-item-container animate__animated animate__fadeInLeft animate__fast"
-  [ngClass]="{ 'animate__fadeOutRight': isDeleting }">
+  style="margin-bottom: 10px;" [ngClass]="{ 'animate__fadeOutRight': isDeleting }">
 
   <a [routerLink]="link">
 
     <div class="cart-item-content">
 
       <div class="cart-item-img">
-        <img src="{{ immaginePrincipale }}" />
+        <img src="{{ product?.immaginePrincipale }}" />
       </div>
 
       <div>
-        <h1 class="cart-item-title"> {{ nome }}</h1>
-        <span>{{ prezzo | currency: 'EUR' }}</span>
-      </div>
-
-      <!--Titolo della carta-->
-
-      <!--Corpo della carta-->
-      <div #bodyText class="cart-item-body">
-        <!--TESTO testo della carta-->
-
-
-        <div #truncator class="fade-out-truncation">
-
-        </div>
-
+        <h1 class="cart-item-title"> {{ product?.nome }}</h1>
+        <span>{{ product?.prezzo | currency: 'EUR' }}</span>
       </div>
 
     </div>
   </a>
 
-  <div class="ingredienti">
+  <!-- <div class="ingredienti">
 
     <div class="ingrediente" *ngFor="let i of ingredienti">
       <img [src]="i.ingrediente.immagine">
@@ -43,17 +30,15 @@
       </div>
     </div>
 
-  </div>
-  <!--DIV PER IL TITOLO-->
+  </div> -->
 
+  <div style="padding:10px">
+    <app-ingredients-table [showHeader]="false" [showRimovibile]="false" [prodIngredients]="prodIngredients"
+      (remove)="removeIngredient($event)">
+    </app-ingredients-table>
+  </div>
 
   <div class="x-button" (click)="onXButtonClick()">
-
-
   </div>
-
-
-
-
 
 </div>

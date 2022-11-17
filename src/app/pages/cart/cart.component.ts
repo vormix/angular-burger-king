@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartProduct } from 'src/app/models/cart-product.model';
 
 // import{faSearch} from '@fortawesome/free-solid-svg-icons';
 import { Product } from 'src/app/models/product.model';
@@ -13,8 +14,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class CartComponent implements OnInit {
  
-  allProducts: Product[] = [];
-  cartProducts:any[]= new Array<any>();
+  cartProducts:CartProduct[]= new Array<CartProduct>();
   deletingProductId: number = 0;
   
   constructor(private productsService:ProductService, private authService: AuthenticationService) {
@@ -35,9 +35,10 @@ export class CartComponent implements OnInit {
     let userId = parseInt(this.authService?.userId || '0');
     if (userId == 0) return;
 
-    this.productsService.getCart(userId).subscribe((data: any) => {
+    this.productsService.getCart(userId).subscribe((data: {prodottiCarrello: CartProduct[]}) => {
       console.log(data); 
       this.cartProducts = data.prodottiCarrello; 
+
       // this.cartProducts = [];   
       // data.prodottiCarrello.forEach((pc: any) => this.cartProducts.push(pc.prodotto));
     });
@@ -46,33 +47,26 @@ export class CartComponent implements OnInit {
   deleteProduct(id:number){
     
 
-    this.productsService.delete(id).subscribe(deletedProduct => {
-      if (deletedProduct.id) {
-        this.deletingProductId = id;
+    // this.productsService.delete(id).subscribe(deletedProduct => {
+    //   if (deletedProduct.id) {
+    //     this.deletingProductId = id;
 
-        setTimeout(() => {
-          let p: any = this.allProducts.find(x => x.id == deletedProduct.id);
-          let index = this.allProducts.indexOf(p);
-          this.allProducts.splice(index, 1);
+    //     setTimeout(() => {
+    //       let p: any = this.allProducts.find(x => x.id == deletedProduct.id);
+    //       let index = this.allProducts.indexOf(p);
+    //       this.allProducts.splice(index, 1);
   
-          // p = this.products.find(x => x.id == deletedProduct.id);
-          // index = this.products.indexOf(p);
-          // this.products.splice(index, 1);
+    //       // p = this.products.find(x => x.id == deletedProduct.id);
+    //       // index = this.products.indexOf(p);
+    //       // this.products.splice(index, 1);
 
-        }, 800);
+    //     }, 800);
 
-      }
-      // console.log(x);
-      // alert('deleted');
-    });
+    //   }
+    //   // console.log(x);
+    //   // alert('deleted');
+    // });
 
   }
   
-
-  filtra(e: any) {
-    console.log(e);
-    let searchTerm: string = e.target.value;
-
-    this.cartProducts = this.allProducts.filter(x => x.nome.toLowerCase().includes(searchTerm.toLowerCase()) || x.prezzo.toString().includes(searchTerm.toLowerCase()));
-  }
 }

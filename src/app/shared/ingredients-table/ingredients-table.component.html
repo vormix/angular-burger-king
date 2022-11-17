@@ -1,0 +1,26 @@
+<table class="table is-bordered">
+  <thead *ngIf="showHeader">
+    <tr>
+      <th>Ingrediente</th>
+      <th>Qta</th>
+      <th *ngIf="showRimovibile">Rim</th>
+      <th>Azioni</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let i of prodIngredients">
+      <td>{{ i.ingrediente.nome }}</td>
+      <td>
+        <input #quantita type="number" min="1" style="width:30px" name="quantita" [value]="i.quantita"
+          (change)="setQuantita(i, quantita.value)">
+      </td>
+      <td *ngIf="showRimovibile">
+        <input type="checkbox" name="rimovibile" [checked]="i.rimovibile" (change)="i.rimovibile = !i.rimovibile">
+      </td>
+      <td>
+        <button (click)="removeIngredient(i.ingrediente)" type="button"
+          class="button is-danger is-small">&times;</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

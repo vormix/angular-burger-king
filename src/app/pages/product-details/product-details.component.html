@@ -45,7 +45,7 @@
       </div>
     </div>
     <div>
-      <table class="table is-bordered">
+      <!-- <table class="table is-bordered">
         <thead>
           <tr>
             <th>Ingrediente</th>
@@ -70,7 +70,11 @@
             </td>
           </tr>
         </tbody>
-      </table>
+      </table> -->
+
+      <app-ingredients-table [showHeader]="true" [showRimovibile]="true" [prodIngredients]="prodIngredients"
+        (remove)="removeIngredient($event)">
+      </app-ingredients-table>
     </div>
 
     <br>

@@ -25,6 +25,7 @@ import { ProductDetailsComponent } from './pages/product-details/product-details
 import { CatalogComponent } from './pages/catalog/catalog.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
+import { IngredientsTableComponent } from './shared/ingredients-table/ingredients-table.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { CartItemComponent } from './cart-item/cart-item.component';
     LoginComponent,
     CatalogComponent,
     CartComponent,
-    CartItemComponent
+    CartItemComponent,
+    IngredientsTableComponent
     
   ],
   imports: [

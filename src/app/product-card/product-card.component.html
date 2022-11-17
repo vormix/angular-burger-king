@@ -1,46 +1,17 @@
 <!--DIV CHE RACCHIUDE TUTTO-->
 <div #container class="product-card-container animate__animated animate__fadeInLeft animate__fast"
   [ngClass]="{ 'animate__fadeOutRight': isDeleting }">
-
   <a [routerLink]="link">
-
     <div class="product-card-content">
-
       <div class="product-card-img">
         <img src="{{ immaginePrincipale }}" />
       </div>
-
       <div>
         <h1 class="product-card-title"> {{ nome }}</h1>
         <span>{{ prezzo | currency: 'EUR' }}</span>
       </div>
-
-      <!--Titolo della carta-->
-
-      <!--Corpo della carta-->
-      <div #bodyText class="product-card-body">
-        <!--TESTO testo della carta-->
-
-
-        <div #truncator class="fade-out-truncation">
-
-        </div>
-
-      </div>
-
     </div>
   </a>
-
-  <!--DIV PER IL TITOLO-->
-
-
   <div class="x-button" (click)="onXButtonClick()">
-
-
   </div>
-
-
-
-
-
 </div>

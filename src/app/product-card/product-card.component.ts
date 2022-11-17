@@ -18,15 +18,9 @@ export class ProductCardComponent implements OnInit {
 
  @Output('delete') deleteEvent:EventEmitter<void>=new EventEmitter<void>();
 
-
-
-
-
-  constructor() { }
+  constructor() { }  
 
   ngOnInit(): void {
-
-
 
   }
 
