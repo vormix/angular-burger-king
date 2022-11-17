@@ -14,6 +14,7 @@ export class IngredientsTableComponent implements OnInit {
   @Input('showHeader') showHeader: boolean = false; 
 
   @Output('remove') remove: EventEmitter<Ingredient> = new EventEmitter<Ingredient>();
+  @Output('change') change: EventEmitter<ProductIngredient> = new EventEmitter<ProductIngredient>();
 
   constructor() { }
 
@@ -24,6 +25,8 @@ export class IngredientsTableComponent implements OnInit {
     let prodIng = this.prodIngredients.find(x => x.idIngrediente == prodIngredient.idIngrediente);
     if (prodIng == null) return;
     prodIng.quantita = Number(value);
+
+    this.change.emit(prodIng);
   }
 
   removeIngredient(i: Ingredient) {

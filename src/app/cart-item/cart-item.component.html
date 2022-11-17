@@ -2,21 +2,18 @@
 <div #container class="cart-item-container animate__animated animate__fadeInLeft animate__fast"
   style="margin-bottom: 10px;" [ngClass]="{ 'animate__fadeOutRight': isDeleting }">
 
-  <a [routerLink]="link">
+  <div class="cart-item-content">
 
-    <div class="cart-item-content">
-
-      <div class="cart-item-img">
-        <img src="{{ product?.immaginePrincipale }}" />
-      </div>
-
-      <div>
-        <h1 class="cart-item-title"> {{ product?.nome }}</h1>
-        <span>{{ product?.prezzo | currency: 'EUR' }}</span>
-      </div>
-
+    <div class="cart-item-img">
+      <img src="{{ product?.immaginePrincipale }}" />
     </div>
-  </a>
+
+    <div>
+      <h1 class="cart-item-title"> {{ product?.nome }}</h1>
+      <span>{{ product?.prezzo | currency: 'EUR' }}</span>
+    </div>
+
+  </div>
 
   <!-- <div class="ingredienti">
 
@@ -34,7 +31,7 @@
 
   <div style="padding:10px">
     <app-ingredients-table [showHeader]="false" [showRimovibile]="false" [prodIngredients]="prodIngredients"
-      (remove)="removeIngredient($event)">
+      (change)="setQuantita($event)" (remove)="removeIngredient($event)">
     </app-ingredients-table>
   </div>
 

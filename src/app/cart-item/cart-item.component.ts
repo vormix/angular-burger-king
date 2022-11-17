@@ -19,7 +19,6 @@ export class CartItemComponent implements OnInit , OnChanges {
 
  prodIngredients: ProductIngredient[] = [];
 
- @Input()link!:any;
  @Input('isDeleting') isDeleting :boolean = false;
  @Input('ingredienti') ingredienti: ProductCartDetail[] = [];
  @Input('product') product!: Product;
@@ -47,7 +46,10 @@ export class CartItemComponent implements OnInit , OnChanges {
  
 
   removeIngredient(ingredient: Ingredient) {
-    console.log('ho rimosso ingrediente', ingredient);
+    console.log('TODO rimuovere ingrediente', ingredient);
+  }
+  setQuantita(prodIng: ProductIngredient){
+    console.log('TODO cambiare quantita', prodIng);
   }
 
   onXButtonClick(){
