@@ -5,12 +5,12 @@
   <div class="cart-item-content">
 
     <div class="cart-item-img">
-      <img src="{{ product?.immaginePrincipale }}" />
+      <img src="{{ product?.imageUrl }}" />
     </div>
 
     <div>
-      <h1 class="cart-item-title"> {{ product?.nome }}</h1>
-      <span>{{ product?.prezzo | currency: 'EUR' }}</span>
+      <h1 class="cart-item-title"> {{ product?.name }}</h1>
+      <span>{{ product?.price | currency: 'EUR' }}</span>
     </div>
 
   </div>
@@ -30,8 +30,8 @@
   </div> -->
 
   <div style="padding:10px">
-    <app-ingredients-table [showHeader]="false" [showRimovibile]="false" [prodIngredients]="prodIngredients"
-      (change)="setQuantita($event)" (remove)="removeIngredient($event)">
+    <app-ingredients-table [readOnly]="true" [prodIngredients]="ingredienti" (change)="setQuantita($event)"
+      (remove)="removeIngredient($event)">
     </app-ingredients-table>
   </div>
 

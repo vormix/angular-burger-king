@@ -97,6 +97,10 @@ export class ProductDetailsComponent implements OnInit {
     // this.prodIngredients.splice(index, 1);
   }
 
+  log(x: any) {
+    console.log(x);
+  }
+
   onSubmit(form:NgForm){
 /*     //STAMPO A CONSOLE IL FORM 
     console.log(form) */;

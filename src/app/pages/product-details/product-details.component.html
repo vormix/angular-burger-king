@@ -45,7 +45,9 @@
       </div>
     </div>
     <div>
-      <!-- <table class="table is-bordered">
+
+      <!-- TODO: far funzionare app-ingredients-table come nella pagina "cart-item" -->
+      <table class="table is-bordered">
         <thead>
           <tr>
             <th>Ingrediente</th>
@@ -70,11 +72,11 @@
             </td>
           </tr>
         </tbody>
-      </table> -->
+      </table>
 
-      <app-ingredients-table [showHeader]="true" [showRimovibile]="true" [prodIngredients]="prodIngredients"
-        (remove)="removeIngredient($event)">
-      </app-ingredients-table>
+      <!-- <app-ingredients-table [prodIngredients]="prodIngredients" (remove)="removeIngredient($event)"
+        (change)="log($event)">
+      </app-ingredients-table> -->
     </div>
 
     <br>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CartProduct } from 'src/app/models/cart-product.model';
+import { CartDto, CartProduct } from 'src/app/models/cart-product.model';
 
 // import{faSearch} from '@fortawesome/free-solid-svg-icons';
 import { Product } from 'src/app/models/product.model';
@@ -14,7 +14,9 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class CartComponent implements OnInit {
  
-  cartProducts:CartProduct[]= new Array<CartProduct>();
+  cartDto: CartDto | undefined;
+
+  // cartProducts:CartProduct[]= new Array<CartProduct>();
   deletingProductId: number = 0;
   
   constructor(private productsService:ProductService, private authService: AuthenticationService) {
@@ -35,9 +37,10 @@ export class CartComponent implements OnInit {
     let userId = parseInt(this.authService?.userId || '0');
     if (userId == 0) return;
 
-    this.productsService.getCart(userId).subscribe((data: {prodottiCarrello: CartProduct[]}) => {
+    this.productsService.getCart(userId).subscribe((data: CartDto) => {
       console.log(data); 
-      this.cartProducts = data.prodottiCarrello; 
+      this.cartDto = data;
+      // this.cartProducts = data.prodottiCarrello; 
 
       // this.cartProducts = [];   
       // data.prodottiCarrello.forEach((pc: any) => this.cartProducts.push(pc.prodotto));

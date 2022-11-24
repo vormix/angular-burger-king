@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { endPoint } from '../common/globals';
 import { Ingredient } from '../models/ingredient.model';
 import { ProductIngredient } from '../models/product-ingredient.model';
+import { CartDto } from '../models/cart-product.model';
 
 
 @Injectable({
@@ -85,10 +86,10 @@ addIngredientsOfProduct(product: Product, ingredients: ProductIngredient[]) {
   return this.http.post(endPoint + `api/products/${product.id}/ingredients`, { ingredients: ingredients } );
 }
 
-getCart(cartId:number): any{
+getCart(cartId:number): Observable<CartDto>{
   // this.products.splice(id,1);
   console.log('getCart', cartId);
-  return this.http.get(endPoint + 'api/cart/GetCart/'+cartId );
+  return this.http.get<CartDto>(endPoint + 'api/cart/GetCartDto/'+cartId );
 
 }
 

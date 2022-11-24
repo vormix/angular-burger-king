@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { IngredientDto } from 'src/app/models/cart-product.model';
 import { Ingredient } from 'src/app/models/ingredient.model';
 import { ProductIngredient } from 'src/app/models/product-ingredient.model';
 
@@ -9,29 +10,29 @@ import { ProductIngredient } from 'src/app/models/product-ingredient.model';
 })
 export class IngredientsTableComponent implements OnInit {
 
-  @Input('prodIngredients') prodIngredients: ProductIngredient[] = [];
-  @Input('showRimovibile') showRimovibile: boolean = false; 
-  @Input('showHeader') showHeader: boolean = false; 
+  @Input('prodIngredients') prodIngredients: IngredientDto[] = [];  
 
-  @Output('remove') remove: EventEmitter<Ingredient> = new EventEmitter<Ingredient>();
-  @Output('change') change: EventEmitter<ProductIngredient> = new EventEmitter<ProductIngredient>();
+  @Input('readOnly') readOnly: boolean = false; 
+
+  @Output('remove') remove: EventEmitter<IngredientDto> = new EventEmitter<IngredientDto>();
+  @Output('change') change: EventEmitter<IngredientDto> = new EventEmitter<IngredientDto>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  setQuantita(prodIngredient: ProductIngredient, value: string) {
-    let prodIng = this.prodIngredients.find(x => x.idIngrediente == prodIngredient.idIngrediente);
+  setQuantita(prodIngredient: IngredientDto, value: string) {
+    let prodIng = this.prodIngredients.find(x => x.id == prodIngredient.id);
     if (prodIng == null) return;
-    prodIng.quantita = Number(value);
+    prodIng.quantity = Number(value);
 
     this.change.emit(prodIng);
   }
 
-  removeIngredient(i: Ingredient) {
+  removeIngredient(i: IngredientDto) {
     // console.log(i);
-    let prodIng = this.prodIngredients.find(pi => pi.idIngrediente == i.id);
+    let prodIng = this.prodIngredients.find(pi => pi.id == i.id);
     if (prodIng == null) return;
     let index = this.prodIngredients.indexOf(prodIng);
     this.prodIngredients.splice(index, 1);
