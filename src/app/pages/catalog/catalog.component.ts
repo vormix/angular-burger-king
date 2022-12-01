@@ -67,6 +67,9 @@ export class CatalogComponent implements OnInit {
 
   OnAddToCart(product: Product) {
     console.log ('Aggiunto al carrello', product);
+    this.productsService.addToCart(product.id).subscribe(result => {
+      console.log(result);
+    })
   }
 
 }

@@ -7,7 +7,7 @@
  -->
     <div *ngIf="cartDto">
       <app-cart-item *ngFor="let product of cartDto.products" [product]="product"
-        (delete)="deleteProduct(product.productId)" [isDeleting]="product.productId == deletingProductId"
+        (delete)="deleteProduct(product.productCartId)" [isDeleting]="product.productCartId == deletingProductCartId"
         [ingredienti]="product.ingredients">
       </app-cart-item>
     </div>

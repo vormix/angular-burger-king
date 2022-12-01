@@ -28,6 +28,7 @@ export interface IngredientDto{
 }
 
 export interface ProductDto {
+  productCartId: number,
   productId: number,
   name: string,
   price: number,

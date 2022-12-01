@@ -17,7 +17,7 @@ export class CartComponent implements OnInit {
   cartDto: CartDto | undefined;
 
   // cartProducts:CartProduct[]= new Array<CartProduct>();
-  deletingProductId: number = 0;
+  deletingProductCartId: number = 0;
   
   constructor(private productsService:ProductService, private authService: AuthenticationService) {
     
@@ -47,29 +47,22 @@ export class CartComponent implements OnInit {
     });
   }
 
-  deleteProduct(id:number){
-    
+  deleteProduct(productCartId:number){
+    console.log('deleteProduct', productCartId);
+    this.productsService.removeFromCart(productCartId).subscribe((result: boolean) => {
+      if (result) {
+        this.deletingProductCartId = productCartId;
+        console.log('deleteProduct result', result);
 
-    // this.productsService.delete(id).subscribe(deletedProduct => {
-    //   if (deletedProduct.id) {
-    //     this.deletingProductId = id;
-
-    //     setTimeout(() => {
-    //       let p: any = this.allProducts.find(x => x.id == deletedProduct.id);
-    //       let index = this.allProducts.indexOf(p);
-    //       this.allProducts.splice(index, 1);
-  
-    //       // p = this.products.find(x => x.id == deletedProduct.id);
-    //       // index = this.products.indexOf(p);
-    //       // this.products.splice(index, 1);
-
-    //     }, 800);
-
-    //   }
-    //   // console.log(x);
-    //   // alert('deleted');
-    // });
-
+        setTimeout(() => {
+          let p : any = this.cartDto?.products.find(x => x.productCartId == productCartId);
+          let index: number = this.cartDto?.products.indexOf(p) || 0;
+          this.cartDto?.products.splice(index, 1);
+          this.deletingProductCartId = 0;
+          console.log('deleteProduct after setTimeout');
+        }, 800);
+      }
+    });
   }
   
 }

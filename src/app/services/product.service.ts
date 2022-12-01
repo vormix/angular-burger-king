@@ -93,4 +93,14 @@ getCart(cartId:number): Observable<CartDto>{
 
 }
 
+addToCart(productId: number) {
+  return this.http.post<number>(endPoint + `api/cart/AddToCart`, productId );
+
+}
+
+removeFromCart(productCartId: number) {
+  return this.http.post<boolean>(endPoint + `api/cart/RemoveFromCart`, productCartId );
+
+}
+
 }

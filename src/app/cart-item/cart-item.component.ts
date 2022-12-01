@@ -22,7 +22,7 @@ export class CartItemComponent implements OnInit  {
  @Input('ingredienti') ingredienti: IngredientDto[] = [];
  @Input('product') product!: ProductDto;
 
- @Output('delete') deleteEvent:EventEmitter<void>=new EventEmitter<void>();
+ @Output('delete') deleteEvent:EventEmitter<ProductDto>=new EventEmitter<ProductDto>();
 
   constructor() { }
 
@@ -39,7 +39,8 @@ export class CartItemComponent implements OnInit  {
   }
 
   onXButtonClick(){
-    this.deleteEvent.emit();
+    console.log('onXButtonClick', this.product);
+    this.deleteEvent.emit(this.product);
   }
 }
 
