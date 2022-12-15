@@ -72,6 +72,13 @@ delete(id:number): Observable<Ingredient>{
 
 }
 
+removeIngredientFromCart(productCartId: number, ingredientId: Number) {
+  return this.http.post<any>(endPoint + 'api/cart/removeIngredientFromCart', { productCartId, ingredientId });
+}
+
+updateIngredientQuantityInCart(productCartId: number, ingredientId: Number, quantity: number) {
+  return this.http.post<any>(endPoint + 'api/cart/updateIngredientQuantityInCart', { productCartId, ingredientId, quantity });
+}
 
 
 }

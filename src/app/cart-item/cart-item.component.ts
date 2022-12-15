@@ -4,6 +4,7 @@ import { Ingredient } from '../models/ingredient.model';
 import { ProductCartDetail } from '../models/product-cart-detail';
 import { ProductIngredient } from '../models/product-ingredient.model';
 import { Product } from '../models/product.model';
+import { IngredientService } from '../services/ingredient.service';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class CartItemComponent implements OnInit  {
 
  @Output('delete') deleteEvent:EventEmitter<ProductDto>=new EventEmitter<ProductDto>();
 
-  constructor() { }
+  constructor(private ingredientService: IngredientService) { }
 
   ngOnInit(): void {
   }
@@ -33,9 +34,15 @@ export class CartItemComponent implements OnInit  {
 
   removeIngredient(ingredient: IngredientDto) {
     console.log('TODO rimuovere ingrediente', ingredient);
+    this.ingredientService.removeIngredientFromCart(this.product.productCartId, ingredient.id).subscribe((z: any) => {
+      console.log(z);
+    })
   }
   setQuantita(prodIng: IngredientDto){
     console.log('TODO cambiare quantita', prodIng);
+    this.ingredientService.updateIngredientQuantityInCart(this.product.productCartId, prodIng.id, prodIng.quantity).subscribe((z: any) => {
+      console.log(z);
+    })
   }
 
   onXButtonClick(){

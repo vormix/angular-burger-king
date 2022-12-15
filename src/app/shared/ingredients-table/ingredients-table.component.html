@@ -11,14 +11,15 @@
     <tr *ngFor="let i of prodIngredients">
       <td>{{ i.name }}</td>
       <td>
-        <input #quantita type="number" min="0" style="width:30px" name="quantita" [value]="i.quantity"
+        <input #quantita type="number" min="1" max="5" style="width:30px" name="quantita" [value]="i.quantity"
           (change)="setQuantita(i, quantita.value)">
       </td>
       <td *ngIf="!readOnly">
         <input type="checkbox" name="rimovibile" [checked]="i.rimovibile" (change)="i.rimovibile = !i.rimovibile">
       </td>
       <td>
-        <button (click)="removeIngredient(i)" type="button" class="button is-danger is-small">&times;</button>
+        <button *ngIf="i.rimovibile" (click)="removeIngredient(i)" type="button"
+          class="button is-danger is-small">&times;</button>
       </td>
     </tr>
   </tbody>
