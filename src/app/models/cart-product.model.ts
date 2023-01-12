@@ -24,7 +24,9 @@ export interface IngredientDto{
     price: number,
     imageUrl: string,
     quantity: number,
-    rimovibile: boolean
+    rimovibile: boolean,
+    quantityBase: number,
+    priceToPay: number
 }
 
 export interface ProductDto {

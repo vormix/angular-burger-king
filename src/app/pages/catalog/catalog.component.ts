@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 // import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import { Product } from 'src/app/models/product.model';
@@ -13,8 +13,8 @@ export class CatalogComponent implements OnInit {
 
   allProducts: Product[] = [];
   products:Product[]= new Array<Product>();
-  deletingProductId: number = 0;
-  
+  addingProductId: number = 0;
+
   constructor(private productsService:ProductService) {
     
   }
@@ -32,30 +32,30 @@ export class CatalogComponent implements OnInit {
     });
   }
 
-  deleteProduct(id:number){
+  // deleteProduct(id:number){
     
 
-    this.productsService.delete(id).subscribe(deletedProduct => {
-      if (deletedProduct.id) {
-        this.deletingProductId = id;
+  //   this.productsService.delete(id).subscribe(deletedProduct => {
+  //     if (deletedProduct.id) {
+  //       this.deletingProductId = id;
 
-        setTimeout(() => {
-          let p: any = this.allProducts.find(x => x.id == deletedProduct.id);
-          let index = this.allProducts.indexOf(p);
-          this.allProducts.splice(index, 1);
+  //       setTimeout(() => {
+  //         let p: any = this.allProducts.find(x => x.id == deletedProduct.id);
+  //         let index = this.allProducts.indexOf(p);
+  //         this.allProducts.splice(index, 1);
   
-          // p = this.products.find(x => x.id == deletedProduct.id);
-          // index = this.products.indexOf(p);
-          // this.products.splice(index, 1);
+  //         // p = this.products.find(x => x.id == deletedProduct.id);
+  //         // index = this.products.indexOf(p);
+  //         // this.products.splice(index, 1);
 
-        }, 800);
+  //       }, 800);
 
-      }
-      // console.log(x);
-      // alert('deleted');
-    });
+  //     }
+  //     // console.log(x);
+  //     // alert('deleted');
+  //   });
 
-  }
+  // }
   
 
   filtra(e: any) {
@@ -68,8 +68,16 @@ export class CatalogComponent implements OnInit {
   OnAddToCart(product: Product) {
     console.log ('Aggiunto al carrello', product);
     this.productsService.addToCart(product.id).subscribe(result => {
+
+      this.productsService.numCartProducts++;
+
+      this.addingProductId = product.id;
+      setTimeout(() => {
+        this.addingProductId = 0;
+      }, 800);
+
       console.log(result);
-    })
+    });
   }
 
 }

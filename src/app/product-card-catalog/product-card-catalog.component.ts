@@ -12,6 +12,7 @@ export class ProductCardCatalogComponent implements OnInit {
 
  @Input('product') product: Product = new Product; 
  @Output('addToCart') addToCart:EventEmitter<Product>=new EventEmitter<Product>();
+ @Input('isAdding') isAdding : boolean = false;
 
   constructor() { }
 

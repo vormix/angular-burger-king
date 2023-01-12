@@ -1,8 +1,5 @@
 <div class="layout-box">
 
-
-
-
   <nav class="navbar is-primary is-fixed-top " role="navigation" aria-label="main navigation">
     <div class="container animate__animated animate__fadeIn animate__faster">
       <div class="navbar-brand">
@@ -33,6 +30,9 @@
             <div class="buttons">
               <a class="button is-link" routerLink="/cart" (click)="toggleOpen()">
                 <i class="fa fa-shopping-cart"></i>
+                <span *ngIf="productsService.numCartProducts > 0" class="ml-2 tag is-rounded is-success"><strong>{{
+                    productsService.numCartProducts
+                    }}</strong></span>
               </a>
               <strong class="mr-3">
                 {{ username }}

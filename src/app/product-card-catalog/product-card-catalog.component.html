@@ -33,7 +33,7 @@
   <!--DIV PER IL TITOLO-->
 
 
-  <div class="x-button button is-info" (click)="onClick()">
+  <div [ngClass]="{ 'animate__heartBeat': isAdding }" class="x-button button is-info" (click)="onClick()">
     <i class="fa fa-shopping-cart"></i>
   </div>
 

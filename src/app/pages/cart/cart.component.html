@@ -6,10 +6,15 @@
     <!--RIGUARDARE       ci dovrei mettere   [link]="i"     ma se lo metto mi da errore
  -->
     <div *ngIf="cartDto">
-      <app-cart-item *ngFor="let product of cartDto.products" [product]="product"
-        (delete)="deleteProduct(product.productCartId)" [isDeleting]="product.productCartId == deletingProductCartId"
-        [ingredienti]="product.ingredients">
-      </app-cart-item>
+      <div>
+        <app-cart-item *ngFor="let product of cartDto.products" [product]="product"
+          (delete)="deleteProduct(product.productCartId)" [isDeleting]="product.productCartId == deletingProductCartId"
+          [ingredienti]="product.ingredients">
+        </app-cart-item>
+      </div>
+      <div>
+        <h2>{{ productsService.cartTotal | currency:'EUR' }}</h2>
+      </div>
     </div>
 
 

@@ -17,9 +17,25 @@ import { CartDto } from '../models/cart-product.model';
 export class ProductService {
 
 //creo l' array che contiene tutte le informazini dei form 
-products :Product[]= new Array<Product>();
+products :Product[] = new Array<Product>();
+
+private static _cartTotal: number = 0;
+get cartTotal() {
+  return ProductService._cartTotal;
+}
+set cartTotal(value) {
+  ProductService._cartTotal = value;
+}
+
+private static _numProducts: number = 0;
+get numCartProducts() {
+  return ProductService._numProducts;
+}
+set numCartProducts(value) {
+  ProductService._numProducts = value;
+}
   
-  constructor(private http : HttpClient) { }
+constructor(private http : HttpClient) { }
   
 getAll(){
   // return this.products;

@@ -14,6 +14,11 @@
         <input #quantita type="number" min="1" max="5" style="width:30px" name="quantita" [value]="i.quantity"
           (change)="setQuantita(i, quantita.value)">
       </td>
+      <td *ngIf="showPriceToAdd">
+        <span *ngIf="i.priceToPay > 0" class="tag is-light"><span *ngIf="i.priceToPay > 0">+ </span>{{ i.priceToPay |
+          currency:
+          'EUR' }}</span>
+      </td>
       <td *ngIf="!readOnly">
         <input type="checkbox" name="rimovibile" [checked]="i.rimovibile" (change)="i.rimovibile = !i.rimovibile">
       </td>

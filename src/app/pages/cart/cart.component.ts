@@ -19,7 +19,7 @@ export class CartComponent implements OnInit {
   // cartProducts:CartProduct[]= new Array<CartProduct>();
   deletingProductCartId: number = 0;
   
-  constructor(private productsService:ProductService, private authService: AuthenticationService) {
+  constructor(public productsService:ProductService, private authService: AuthenticationService) {
     
   }
 
@@ -40,6 +40,7 @@ export class CartComponent implements OnInit {
     this.productsService.getCart(userId).subscribe((data: CartDto) => {
       console.log(data); 
       this.cartDto = data;
+      this.productsService.cartTotal = data.total;
       // this.cartProducts = data.prodottiCarrello; 
 
       // this.cartProducts = [];   
@@ -51,8 +52,17 @@ export class CartComponent implements OnInit {
     console.log('deleteProduct', productCartId);
     this.productsService.removeFromCart(productCartId).subscribe((result: boolean) => {
       if (result) {
+        this.productsService.numCartProducts--;
+
+        // ricarico totale carrello
+        let userId = parseInt(this.authService?.userId || '0');
+        if (userId == 0) return;
         this.deletingProductCartId = productCartId;
         console.log('deleteProduct result', result);
+        this.productsService.getCart(userId).subscribe((data: CartDto) => {
+          this.productsService.cartTotal = data.total;
+        });
+        // ricarico totale carrello
 
         setTimeout(() => {
           let p : any = this.cartDto?.products.find(x => x.productCartId == productCartId);

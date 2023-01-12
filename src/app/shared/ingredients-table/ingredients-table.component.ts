@@ -13,6 +13,7 @@ export class IngredientsTableComponent implements OnInit {
   @Input('prodIngredients') prodIngredients: IngredientDto[] = [];  
 
   @Input('readOnly') readOnly: boolean = false; 
+  @Input('showPriceToAdd') showPriceToAdd: boolean = false; 
 
   @Output('remove') remove: EventEmitter<IngredientDto> = new EventEmitter<IngredientDto>();
   @Output('change') change: EventEmitter<IngredientDto> = new EventEmitter<IngredientDto>();

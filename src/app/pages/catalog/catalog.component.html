@@ -19,7 +19,8 @@
 
   <div class="products-list">
 
-    <app-product-card-catalog *ngFor="let product of products" (addToCart)="OnAddToCart($event)" [product]="product">
+    <app-product-card-catalog *ngFor="let product of products" (addToCart)="OnAddToCart($event)" [product]="product"
+      [isAdding]="product.id == addingProductId">
     </app-product-card-catalog>
 
   </div>

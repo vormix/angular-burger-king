@@ -1,10 +1,12 @@
 import { Component, OnInit, Input, Output,EventEmitter} from '@angular/core';
-import { IngredientDto, ProductDto } from '../models/cart-product.model';
+import { CartDto, IngredientDto, ProductDto } from '../models/cart-product.model';
 import { Ingredient } from '../models/ingredient.model';
 import { ProductCartDetail } from '../models/product-cart-detail';
 import { ProductIngredient } from '../models/product-ingredient.model';
 import { Product } from '../models/product.model';
+import { AuthenticationService } from '../services/authentication.service';
 import { IngredientService } from '../services/ingredient.service';
+import { ProductService } from '../services/product.service';
 
 
 @Component({
@@ -25,7 +27,7 @@ export class CartItemComponent implements OnInit  {
 
  @Output('delete') deleteEvent:EventEmitter<ProductDto>=new EventEmitter<ProductDto>();
 
-  constructor(private ingredientService: IngredientService) { }
+  constructor(private ingredientService: IngredientService, public productsService:ProductService, private authService: AuthenticationService) { }
 
   ngOnInit(): void {
   }
@@ -36,12 +38,30 @@ export class CartItemComponent implements OnInit  {
     console.log('TODO rimuovere ingrediente', ingredient);
     this.ingredientService.removeIngredientFromCart(this.product.productCartId, ingredient.id).subscribe((z: any) => {
       console.log(z);
+        // ricarico totale carrello
+        let userId = parseInt(this.authService?.userId || '0');
+        if (userId == 0) return;
+        this.productsService.getCart(userId).subscribe((data: CartDto) => {
+          this.productsService.cartTotal = data.total;
+        });
+        // ricarico totale carrello
     })
   }
   setQuantita(prodIng: IngredientDto){
     console.log('TODO cambiare quantita', prodIng);
+    prodIng.priceToPay = prodIng.quantity > prodIng.quantityBase ? (prodIng.quantity - prodIng.quantityBase) * prodIng.price : 0;
     this.ingredientService.updateIngredientQuantityInCart(this.product.productCartId, prodIng.id, prodIng.quantity).subscribe((z: any) => {
       console.log(z);
+
+
+        // ricarico totale carrello
+        let userId = parseInt(this.authService?.userId || '0');
+        if (userId == 0) return;
+        this.productsService.getCart(userId).subscribe((data: CartDto) => {
+          this.productsService.cartTotal = data.total;
+        });
+        // ricarico totale carrello
+
     })
   }
 
