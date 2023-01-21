@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-// import{faSearch} from '@fortawesome/free-solid-svg-icons';
 import { Product } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 

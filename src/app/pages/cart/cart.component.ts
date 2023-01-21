@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartDto, CartProduct } from 'src/app/models/cart-product.model';
 
-// import{faSearch} from '@fortawesome/free-solid-svg-icons';
 import { Product } from 'src/app/models/product.model';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ProductService } from 'src/app/services/product.service';
