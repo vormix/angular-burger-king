@@ -5,7 +5,8 @@ import { Ingredient } from '../models/ingredient.model';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { endPoint } from '../common/globals';
+import { environment } from 'src/environments/environment';
+
 
 
 @Injectable({
@@ -21,7 +22,7 @@ ingredients :Ingredient[]= new Array<Ingredient>();
 getAll(){
   // return this.ingredients;
 
-  return this.http.get(endPoint + 'api/ingredients');
+  return this.http.get(environment.endPoint + 'api/ingredients');
   
 }
 
@@ -30,7 +31,7 @@ getAll(){
   // creo dei metodi per manipolare i dati all'interno dell'array
 get(id:number){
   // return this.ingredients[id];
-  return this.http.get(endPoint + 'api/ingredients/'+id);
+  return this.http.get(environment.endPoint + 'api/ingredients/'+id);
   
 }
 
@@ -47,7 +48,7 @@ add(ingredient: Ingredient){
   // let headers = new HttpHeaders();
   // headers = headers.set('Content-Type', 'application/json'); // 'Access-Control-Allow-Origin':'*'
 
-  return this.http.post(endPoint + 'api/ingredients', ingredient);
+  return this.http.post(environment.endPoint + 'api/ingredients', ingredient);
 // let newLength =this.ingredients.push(ingredient);
 // let index= newLength -1;
 // return index;
@@ -58,7 +59,7 @@ add(ingredient: Ingredient){
 update(id:number, ingredient: Ingredient){
 
   ingredient.id = id;
-  return this.http.put(endPoint + 'api/ingredients/'+id, ingredient);
+  return this.http.put(environment.endPoint + 'api/ingredients/'+id, ingredient);
   // let ingredient = this.ingredients[id];
 
  
@@ -68,16 +69,16 @@ update(id:number, ingredient: Ingredient){
 delete(id:number): Observable<Ingredient>{
   // this.ingredients.splice(id,1);
   console.log('delete', id);
-  return this.http.delete<Ingredient>(endPoint + 'api/ingredients/'+id);
+  return this.http.delete<Ingredient>(environment.endPoint + 'api/ingredients/'+id);
 
 }
 
 removeIngredientFromCart(productCartId: number, ingredientId: Number) {
-  return this.http.post<any>(endPoint + 'api/cart/removeIngredientFromCart', { productCartId, ingredientId });
+  return this.http.post<any>(environment.endPoint + 'api/cart/removeIngredientFromCart', { productCartId, ingredientId });
 }
 
 updateIngredientQuantityInCart(productCartId: number, ingredientId: Number, quantity: number) {
-  return this.http.post<any>(endPoint + 'api/cart/updateIngredientQuantityInCart', { productCartId, ingredientId, quantity });
+  return this.http.post<any>(environment.endPoint + 'api/cart/updateIngredientQuantityInCart', { productCartId, ingredientId, quantity });
 }
 
 

@@ -1,2 +1,2 @@
 
-export const endPoint: string = "https://localhost:7159/";
+// export const endPoint: string = "https://localhost:7159/";
