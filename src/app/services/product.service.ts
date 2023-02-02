@@ -16,6 +16,8 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductService {
 
+
+
 //creo l' array che contiene tutte le informazini dei form 
 products :Product[] = new Array<Product>();
 
@@ -118,5 +120,9 @@ removeFromCart(productCartId: number) {
   return this.http.post<boolean>(environment.endPoint + `api/cart/RemoveFromCart`, productCartId );
 
 }
+
+  transformCartToOrder(userId: number) {
+    return this.http.post<number>(environment.endPoint + `api/cart/TransformCartToOrder`, userId );
+  }
 
 }

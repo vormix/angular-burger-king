@@ -12,11 +12,19 @@
           [ingredienti]="product.ingredients">
         </app-cart-item>
       </div>
-      <div>
-        <h2>{{ productsService.cartTotal | currency:'EUR' }}</h2>
+      <div *ngIf="cartDto.products.length > 0">
+        <div>
+          <h2>{{ productsService.cartTotal | currency:'EUR' }}</h2>
+        </div>
+        <div>
+          <button class="button is-primary" type="button" (click)="transformOrder();">Conferma Ordine</button>
+        </div>
       </div>
     </div>
 
+    <div *ngIf="isOrderSubmitted">
+      <p>Grazie per aver ordinato!</p>
+    </div>
 
   </div>
 

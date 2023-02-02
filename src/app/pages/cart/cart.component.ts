@@ -14,6 +14,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class CartComponent implements OnInit {
  
   cartDto: CartDto | undefined;
+  isOrderSubmitted: boolean = false;
 
   // cartProducts:CartProduct[]= new Array<CartProduct>();
   deletingProductCartId: number = 0;
@@ -23,6 +24,16 @@ export class CartComponent implements OnInit {
   }
 
 
+  transformOrder() {
+    let userId = parseInt(this.authService?.userId || '0');
+    this.productsService.transformCartToOrder(userId).subscribe(idOrder => {
+      if (idOrder > 0) {
+        this.productsService.numCartProducts = 0;
+        this.cartDto.products = [];
+        this.isOrderSubmitted = true;
+      }
+    })
+  }
 
 //fontawesome 
   // faSearch=faSearch;
