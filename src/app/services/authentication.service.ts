@@ -16,9 +16,14 @@ export class User {
 })
 export class AuthenticationService {
 
+  
   constructor(
     private httpClient: HttpClient
   ) {
+  }
+
+  get ADMIN() {
+    return "Admin";
   }
 
   get username() {
@@ -27,6 +32,10 @@ export class AuthenticationService {
 
   get userId(): string {
     return sessionStorage.getItem('userId') || '';
+  }
+
+  get role(): string {
+    return sessionStorage.getItem('role') || '';
   }
 
   get token() {
@@ -49,6 +58,7 @@ export class AuthenticationService {
             sessionStorage.setItem('token', response.token);
             sessionStorage.setItem('username', username);
             sessionStorage.setItem('userId', response.id.toString());
+            sessionStorage.setItem('role', response.role.toString());
           }
           return response; 
         }

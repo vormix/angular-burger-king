@@ -4,10 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-
 import {FormsModule} from '@angular/forms';     //LO IMPORTO MANUALMENTE PER I FORM CHE TROVO SU NOTE-DETAILS
-
-
 
 import { IngredientsListComponent } from './pages/ingredients-list/ingredients-list.component';
 import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
@@ -26,6 +23,9 @@ import { CatalogComponent } from './pages/catalog/catalog.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { IngredientsTableComponent } from './shared/ingredients-table/ingredients-table.component';
+import { AdminGuardService } from './services/admin.activate.service';
+import { OrdersListComponent } from './pages/orders-list/orders-list.component';
+import { OrderDetailsComponent } from './pages/order-details/order-details.component';
 
 @NgModule({
   declarations: [
@@ -43,18 +43,20 @@ import { IngredientsTableComponent } from './shared/ingredients-table/ingredient
     CatalogComponent,
     CartComponent,
     CartItemComponent,
-    IngredientsTableComponent
-    
+    IngredientsTableComponent,
+    OrdersListComponent,
+    OrderDetailsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule,    
     // FontAwesomeModule,
     FormsModule, 
     HttpClientModule 
   ],
   providers: [
     AuthGuardService,
+    AdminGuardService,
     {  
       provide:HTTP_INTERCEPTORS, useClass:AuthInterceptorService, multi:true 
     }

@@ -9,6 +9,9 @@ import { ProductDetailsComponent } from './pages/product-details/product-details
 import { ProductsListComponent } from './pages/products-list/products-list.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { OrdersListComponent } from './pages/orders-list/orders-list.component';
+import { OrderDetailsComponent } from './pages/order-details/order-details.component';
+import { AdminGuardService } from './services/admin.activate.service';
 
 
 const routes: Routes = [
@@ -36,6 +39,15 @@ const routes: Routes = [
       {path:'',component:ProductsListComponent},
       {path:'new',component:ProductDetailsComponent},
       {path:':id',component:ProductDetailsComponent}
+    ]
+  },
+  {
+    path:'orders',
+    component: MainLayoutComponent ,
+    canActivate: [AuthGuardService, AdminGuardService],
+    children:[
+      {path:'',component:OrdersListComponent},
+      {path:':id',component:OrderDetailsComponent}
     ]
   },
   {

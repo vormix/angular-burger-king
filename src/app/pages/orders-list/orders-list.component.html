@@ -1,0 +1,23 @@
+<div class="main-container container">
+
+  <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Data</th>
+        <th>Stato</th>
+        <th>Totale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let o of orders">
+        <td>{{ o.id }}</td>
+        <td>{{ o.username }}</td>
+        <td>{{ o.data | date: 'dd/MM/yyyy HH:mm' }}</td>
+        <td>{{ o.stato }}</td>
+        <td>{{ o.totale | currency:'EUR' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
