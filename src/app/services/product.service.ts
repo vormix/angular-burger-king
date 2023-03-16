@@ -122,7 +122,7 @@ removeFromCart(productCartId: number) {
 }
 
   transformCartToOrder(userId: number) {
-    return this.http.post<number>(environment.endPoint + `api/cart/TransformCartToOrder`, userId );
+    return this.http.post<any>(environment.endPoint + `api/cart/TransformCartToOrder`, userId );
   }
 
 }

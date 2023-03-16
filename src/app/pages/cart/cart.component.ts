@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartDto, CartProduct } from 'src/app/models/cart-product.model';
 
 import { Product } from 'src/app/models/product.model';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ProductService } from 'src/app/services/product.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -16,22 +18,34 @@ export class CartComponent implements OnInit {
   cartDto: CartDto | undefined;
   isOrderSubmitted: boolean = false;
 
+  url: string;
+
   // cartProducts:CartProduct[]= new Array<CartProduct>();
   deletingProductCartId: number = 0;
   
-  constructor(public productsService:ProductService, private authService: AuthenticationService) {
+  constructor(public productsService:ProductService, private authService: AuthenticationService, private router:Router) {
     
   }
 
 
   transformOrder() {
     let userId = parseInt(this.authService?.userId || '0');
-    this.productsService.transformCartToOrder(userId).subscribe(idOrder => {
-      if (idOrder > 0) {
+    this.productsService.transformCartToOrder(userId).subscribe(resp => {
+
+      if (resp.idOrdine > 0 && resp.payToken != "") {
+        this.url = environment.endPointBanca + "?payToken=" + resp.payToken;
+        
         this.productsService.numCartProducts = 0;
         this.cartDto.products = [];
         this.isOrderSubmitted = true;
       }
+
+      // if (idOrder > 0) {
+      //   this.productsService.numCartProducts = 0;
+      //   this.cartDto.products = [];
+      //   this.isOrderSubmitted = true;
+      // }
+
     })
   }
 

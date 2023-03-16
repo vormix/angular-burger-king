@@ -7,14 +7,16 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class OrderService {
-
+  
   constructor(private http : HttpClient) { }
   
   getAll(){
-    // return this.products;
+    // return this.products;    
+    return this.http.get(environment.endPoint + 'api/orders/GetOrders');    
+  }
 
-    return this.http.get(environment.endPoint + 'api/orders/GetOrders');
-    
+  getOrderOnce(payToken: string) {
+    return this.http.get<any>(environment.endPoint + 'api/orders/GetOrderOnce?payToken='+payToken);    
   }
 
 

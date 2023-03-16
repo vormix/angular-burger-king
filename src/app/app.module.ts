@@ -26,6 +26,7 @@ import { IngredientsTableComponent } from './shared/ingredients-table/ingredient
 import { AdminGuardService } from './services/admin.activate.service';
 import { OrdersListComponent } from './pages/orders-list/orders-list.component';
 import { OrderDetailsComponent } from './pages/order-details/order-details.component';
+import { CallbackComponent } from './pages/callback/callback.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { OrderDetailsComponent } from './pages/order-details/order-details.compo
     CartItemComponent,
     IngredientsTableComponent,
     OrdersListComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    CallbackComponent
   ],
   imports: [
     BrowserModule,

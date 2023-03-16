@@ -23,7 +23,10 @@
     </div>
 
     <div *ngIf="isOrderSubmitted">
-      <p>Grazie per aver ordinato!</p>
+      <h2>Totale: </h2>
+      <span style="font-size:36px;">{{ productsService.cartTotal | currency:'EUR' }}</span>
+      <p style="font-size:24px;">Completa il pagamento nel sito della banca:</p>
+      <a [href]="url" target="_blank" class="mt-5 button is-primary">Vai al pagamento</a>
     </div>
 
   </div>

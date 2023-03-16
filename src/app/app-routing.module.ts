@@ -12,6 +12,7 @@ import { CartComponent } from './pages/cart/cart.component';
 import { OrdersListComponent } from './pages/orders-list/orders-list.component';
 import { OrderDetailsComponent } from './pages/order-details/order-details.component';
 import { AdminGuardService } from './services/admin.activate.service';
+import { CallbackComponent } from './pages/callback/callback.component';
 
 
 const routes: Routes = [
@@ -49,6 +50,10 @@ const routes: Routes = [
       {path:'',component:OrdersListComponent},
       {path:':id',component:OrderDetailsComponent}
     ]
+  },
+  {
+    path:'callback',
+    component: CallbackComponent 
   },
   {
     path:'catalog',

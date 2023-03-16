@@ -27,19 +27,19 @@ export class AuthenticationService {
   }
 
   get username() {
-    return sessionStorage.getItem('username');
+    return localStorage.getItem('username');
   }
 
   get userId(): string {
-    return sessionStorage.getItem('userId') || '';
+    return localStorage.getItem('userId') || '';
   }
 
   get role(): string {
-    return sessionStorage.getItem('role') || '';
+    return localStorage.getItem('role') || '';
   }
 
   get token() {
-    return sessionStorage.getItem('token');
+    return localStorage.getItem('token');
   }
 
   authenticate(username: string, password: string) {
@@ -55,10 +55,10 @@ export class AuthenticationService {
         response => {
           if (response != null) {
             response = JSON.parse(response);
-            sessionStorage.setItem('token', response.token);
-            sessionStorage.setItem('username', username);
-            sessionStorage.setItem('userId', response.id.toString());
-            sessionStorage.setItem('role', response.role.toString());
+            localStorage.setItem('token', response.token);
+            localStorage.setItem('username', username);
+            localStorage.setItem('userId', response.id.toString());
+            localStorage.setItem('role', response.role.toString());
           }
           return response; 
         }
@@ -76,7 +76,7 @@ export class AuthenticationService {
   }
 
   logOut() {
-    sessionStorage.removeItem('username');
-    sessionStorage.removeItem('token');
+    localStorage.removeItem('username');
+    localStorage.removeItem('token');
   }
 }
