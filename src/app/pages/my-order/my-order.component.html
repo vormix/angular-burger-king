@@ -1,0 +1,40 @@
+<div class="main-container container">
+
+  <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Data</th>
+        <th>Stato</th>
+        <th>Totale</th>
+        <th *ngIf="order.stato == 'DA_PAGARE'"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="order">
+        <td>{{ order.id }}</td>
+        <td>{{ order.data | date: 'dd/MM/yyyy HH:mm' }}</td>
+        <td>
+          <span class="tag is-light" [ngClass]="{
+            'is-warning': order.stato == 'DA_PAGARE',
+            'is-info': order.stato == 'PAGATO',
+            'is-success': order.stato == 'EVASO'
+          }">{{ order.stato }}</span>
+
+        </td>
+        <td>{{ order.totale | currency:'EUR' }}</td>
+        <td width="120px" *ngIf="order.stato == 'DA_PAGARE'">
+          <div class="buttons">
+            <a class="x-button button is-warning" target="_blank"
+              [href]="endPointBanca + '?payToken=' + order.payToken">Paga
+              Ora</a>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <pre>
+    {{ jsonOrdine }}
+  </pre>
+</div>

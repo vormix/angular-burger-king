@@ -37,3 +37,14 @@ export interface ProductDto {
   imageUrl: string,
   ingredients: IngredientDto[]        
 }
+
+export interface OrderDto {
+  id: number,
+  data: Date,
+  stato: string,
+  totale: number,
+  userId: number,
+  username: string,
+  payToken: string,
+  products: ProductDto[]        
+}

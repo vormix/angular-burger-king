@@ -12,6 +12,7 @@ export class CallbackComponent implements OnInit {
 
   order : string;
   descr : string;
+  orderId: number;
 
   constructor(public orderService:OrderService, 
               private authService: AuthenticationService, 
@@ -29,6 +30,7 @@ export class CallbackComponent implements OnInit {
           if (x.ordine) {
             this.descr = "Grazie per aver pagato!";
             this.order = JSON.stringify(x);
+            this.orderId = x.ordine.id;
           }
           else this.descr = "Pagamento non esistente oppure già elaborato";
         })

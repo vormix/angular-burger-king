@@ -27,6 +27,9 @@ import { AdminGuardService } from './services/admin.activate.service';
 import { OrdersListComponent } from './pages/orders-list/orders-list.component';
 import { OrderDetailsComponent } from './pages/order-details/order-details.component';
 import { CallbackComponent } from './pages/callback/callback.component';
+import { NoAuthGuardService } from './services/noauth.activate.service';
+import { MyOrdersComponent } from './pages/my-orders/my-orders.component';
+import { MyOrderComponent } from './pages/my-order/my-order.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,9 @@ import { CallbackComponent } from './pages/callback/callback.component';
     IngredientsTableComponent,
     OrdersListComponent,
     OrderDetailsComponent,
-    CallbackComponent
+    CallbackComponent,
+    MyOrdersComponent,
+    MyOrderComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +64,7 @@ import { CallbackComponent } from './pages/callback/callback.component';
   providers: [
     AuthGuardService,
     AdminGuardService,
+    NoAuthGuardService,
     {  
       provide:HTTP_INTERCEPTORS, useClass:AuthInterceptorService, multi:true 
     }

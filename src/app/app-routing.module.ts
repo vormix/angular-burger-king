@@ -13,15 +13,20 @@ import { OrdersListComponent } from './pages/orders-list/orders-list.component';
 import { OrderDetailsComponent } from './pages/order-details/order-details.component';
 import { AdminGuardService } from './services/admin.activate.service';
 import { CallbackComponent } from './pages/callback/callback.component';
+import { NoAuthGuardService } from './services/noauth.activate.service';
+import { MyOrdersComponent } from './pages/my-orders/my-orders.component';
+import { MyOrderComponent } from './pages/my-order/my-order.component';
 
 
 const routes: Routes = [
   {
     path: '',
+    canActivate: [NoAuthGuardService],
     component: LoginComponent
   },
   {
     path: 'login',
+    canActivate: [NoAuthGuardService],
     component: LoginComponent
   },
   {
@@ -35,7 +40,7 @@ const routes: Routes = [
   {
     path:'products',
     component: MainLayoutComponent ,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService, AdminGuardService],
     children:[
       {path:'',component:ProductsListComponent},
       {path:'new',component:ProductDetailsComponent},
@@ -64,9 +69,18 @@ const routes: Routes = [
     ]
   },
   {
-    path:'ingredients',
+    path:'my-orders',
     component: MainLayoutComponent ,
     canActivate: [AuthGuardService],
+    children:[
+      {path:'',component:MyOrdersComponent},
+      {path:':id',component:MyOrderComponent}    
+    ]
+  },
+  {
+    path:'ingredients',
+    component: MainLayoutComponent ,
+    canActivate: [AuthGuardService, AdminGuardService],
     children:[
       {path:'',component:IngredientsListComponent},
       {path:'new',component:IngredientDetailsComponent},

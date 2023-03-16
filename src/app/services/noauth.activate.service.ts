@@ -4,7 +4,7 @@ import { AuthenticationService } from './authentication.service';
  
  
 @Injectable()
-export class AdminGuardService implements CanActivate {
+export class NoAuthGuardService implements CanActivate {
  
     constructor(private router:Router, private authService: AuthenticationService ) {
     }
@@ -13,10 +13,12 @@ export class AdminGuardService implements CanActivate {
                 state: RouterStateSnapshot): boolean {
  
         //check some condition  
-        if (this.authService.role != this.authService.ADMIN)  {
-            console.log('You are not an admin');
+        if (this.authService.isUserLoggedIn())  {
+            console.log('You are already logged in');
             this.router.navigate(['/catalog']);
-
+            //redirect to login/home page etc
+            //return false to cancel the navigation
+            // ciao
             return false;
         } 
         return true;

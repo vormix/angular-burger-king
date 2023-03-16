@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  endPoint: "https://localhost:7159/",
+  endPoint: "http://localhost/BurgerKingAPI/",
   endPointBanca: "http://localhost/banca/Aspx/Utente/Pay.aspx"
 };
 

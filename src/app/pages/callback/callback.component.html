@@ -1,5 +1,5 @@
 <div class="container" style="margin-top: 100px;">
   <p style="font-size: 24px;">{{ descr }}</p>
   <pre *ngIf="order">{{ order }}</pre>
-  <a class="button is-primary mt-5" [routerLink]="'/catalog'"> Torna al Negozio</a>
+  <a class="button is-primary mt-5" [routerLink]="'/my-orders/'+orderId"> Apri ordine</a>
 </div>

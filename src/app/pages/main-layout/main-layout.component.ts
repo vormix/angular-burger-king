@@ -15,7 +15,7 @@ export class MainLayoutComponent implements OnInit {
   public username: string | null = '';
   //public numProducts: number = 0;
 
-  constructor(private authService: AuthenticationService, public productsService:ProductService, private router:Router) { 
+  constructor(public authService: AuthenticationService, public productsService:ProductService, private router:Router) { 
   }
 
   ngOnInit(): void {
@@ -24,7 +24,8 @@ export class MainLayoutComponent implements OnInit {
     let userId = parseInt(this.authService?.userId || '0');
     if (userId > 0) {
       this.productsService.getCart(userId).subscribe((data: CartDto) => {
-        this.productsService.numCartProducts = data.products.length;
+        if (!data) this.productsService.numCartProducts = 0;
+        else this.productsService.numCartProducts = data.products.length;
       });
     }
   }

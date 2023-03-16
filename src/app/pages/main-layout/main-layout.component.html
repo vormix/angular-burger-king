@@ -3,7 +3,7 @@
   <nav class="navbar is-primary is-fixed-top " role="navigation" aria-label="main navigation">
     <div class="container animate__animated animate__fadeIn animate__faster">
       <div class="navbar-brand">
-        <a class="navbar-item" routerLink="/ingredients" (click)="toggleOpen()">
+        <a class="navbar-item" routerLink="/" (click)="toggleOpen()">
           Ng Burger King
         </a>
 
@@ -19,26 +19,34 @@
         [ngClass]="{'is-active' : isBurgerOpen }">
         <div class="navbar-start">
 
-          <a class="navbar-item" routerLink="/ingredients" (click)="toggleOpen()">Ingredienti</a>
-          <a class="navbar-item" routerLink="/products" (click)="toggleOpen()">Prodotti</a>
-          <a class="navbar-item" routerLink="/catalog" (click)="toggleOpen()">Catalogo</a>
-          <a class="navbar-item" routerLink="/orders" (click)="toggleOpen()">Ordini</a>
-
+          <a *ngIf="authService.role == 'Admin'" class="navbar-item" routerLink="/ingredients"
+            (click)="toggleOpen()">Ingredienti</a>
+          <a *ngIf="authService.role == 'Admin'" class="navbar-item" routerLink="/products"
+            (click)="toggleOpen()">Prodotti</a>
+          <a *ngIf="authService.role == 'Customer'" class="navbar-item" routerLink="/catalog"
+            (click)="toggleOpen()">Catalogo</a>
+          <a *ngIf="authService.role == 'Admin'" class="navbar-item" routerLink="/orders"
+            (click)="toggleOpen()">Ordini</a>
+          <a *ngIf="authService.role == 'Customer'" class="navbar-item" routerLink="/my-orders" (click)="toggleOpen()">I
+            miei
+            Ordini</a>
         </div>
 
         <div class="navbar-end">
+
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-link" routerLink="/cart" (click)="toggleOpen()">
+              <a *ngIf="!authService.isUserLoggedIn() || authService.role == 'Customer'" class="button is-link"
+                routerLink="/cart" (click)="toggleOpen()">
                 <i class="fa fa-shopping-cart"></i>
-                <span *ngIf="productsService.numCartProducts > 0" class="ml-2 tag is-rounded is-success"><strong>{{
+                <span class="ml-2 tag is-rounded is-success"><strong>{{
                     productsService.numCartProducts
                     }}</strong></span>
               </a>
               <strong class="mr-3">
                 {{ username }}
               </strong>
-              <button class="button is-link" (click)="logout()">
+              <button *ngIf="authService.isUserLoggedIn()" class="button is-link" (click)="logout()">
                 <strong>Logout</strong>
               </button>
             </div>
