@@ -13,7 +13,7 @@ export class MyOrderComponent implements OnInit {
 
   endPointBanca;
   order: OrderDto;
-  jsonOrdine: string;
+  // jsonOrdine: string;
 
   constructor(private orderService: OrderService, 
               private router:Router,
@@ -33,7 +33,7 @@ export class MyOrderComponent implements OnInit {
           }
           this.order = order;
           console.log('getMyOrder', order);
-          this.jsonOrdine = JSON.stringify(this.order);
+          // this.jsonOrdine = JSON.stringify(this.order);
         });
       }
     })

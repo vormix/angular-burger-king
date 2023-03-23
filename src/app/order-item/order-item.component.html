@@ -1,0 +1,27 @@
+<div #container class="order-item-container" style="margin-bottom: 10px;">
+
+  <div class="order-item-content">
+
+    <div>
+      <div style="margin-right: 20px;">
+        <h1 class="order-item-title"> {{ product?.nomeProdotto }}</h1>
+        <!-- <span>{{ product?.prezzo | currency: 'EUR' }}</span> -->
+      </div>
+      <div class="order-item-img w-100">
+        <img src="{{ product?.imageUrl }}" />
+      </div>
+
+    </div>
+
+
+    <table class="table is-bordered">
+      <tbody>
+        <tr *ngFor="let i of product?.details">
+          <td>{{ i.nomeIngrediente }}</td>
+          <td>{{ i.quantita }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

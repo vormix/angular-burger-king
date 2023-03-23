@@ -46,5 +46,23 @@ export interface OrderDto {
   userId: number,
   username: string,
   payToken: string,
-  products: ProductDto[]        
+  products: ProductOrderDto[]        
+}
+
+export interface ProductOrderDto {
+  id: number,
+  idProdotto: number,
+  nomeProdotto: string,
+  prezzo: number,
+  imageUrl: string,
+  details: DetailProductOrderDto[]           
+}
+
+export interface DetailProductOrderDto{
+
+  idIngrediente: number,
+  nomeIngrediente: string,
+  prezzo: number,
+  quantita: number,  
+
 }

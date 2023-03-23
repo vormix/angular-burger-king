@@ -8,6 +8,7 @@
         <th>Data</th>
         <th>Stato</th>
         <th>Totale</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -15,8 +16,17 @@
         <td>{{ o.id }}</td>
         <td>{{ o.username }}</td>
         <td>{{ o.data | date: 'dd/MM/yyyy HH:mm' }}</td>
-        <td>{{ o.stato }}</td>
+        <td>
+          <span class="tag is-light" [ngClass]="{
+              'is-warning': o.stato == 'DA_PAGARE',
+              'is-info': o.stato == 'PAGATO',
+              'is-success': o.stato == 'EVASO'
+            }">{{ o.stato }}</span>
+        </td>
         <td>{{ o.totale | currency:'EUR' }}</td>
+        <td width="80px">
+          <a class="has-text-grey" [routerLink]="'/orders/'+o.id"> Vedi&raquo;</a>
+        </td>
       </tr>
     </tbody>
   </table>

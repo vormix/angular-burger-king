@@ -1,0 +1,134 @@
+@import '../../main-styles.scss';
+
+.order-item-container{
+    position:relative;
+    background: white;
+    border-radius: 5px;             //radius fa lo smusso sugli angoli
+
+    box-shadow: 0px 2px 15px 2px rgba(black,0.068);
+    transition:box-shadow 0.2s ease-out;    //questione di grafica
+    
+
+    //SIGNIFICA CHE QUANDO CI PASSO SOPRA MI CAMBIA LA GRAFICA   
+    &:hover{
+         
+        box-shadow:0px 0px 0px 4px rgba(black,0.068);
+
+        .x-button{
+            opacity: 1;
+            transition-delay: 0.35s;    //aspetta 0.35 secondi prima che la transizione abbia effetto
+            transform:scale(1);
+        }
+    }
+
+
+    .order-item-content{
+        padding:25px;
+        display: flex;
+
+        .order-item-img {
+          
+          margin-right: 15px;
+        }
+
+        .order-item-title{
+            font-size:22px;
+            font-weight: bold;
+            color:$purple;
+        }
+
+        .order-item-body{
+            position:relative;
+
+            color: #555;
+            max-height:80px;   //Massima altezza della "ordera"
+            overflow:hidden;
+
+
+            .fade-out-truncation{
+                position:absolute;
+
+                pointer-events: none;
+
+                bottom:0;
+                height:50%;
+                width:100%;
+
+                //.........N.B........... PER CAMBIARE L'OPACITA NELLA PARTE FINALE 
+               // background: linear-gradient(to bottom,rgba(white,0) 0%,rgba(white,0.8) 50%,white 100%);
+
+            }
+        }
+    }
+}
+
+
+//CSS PER LA X DI DELETE
+.x-button{
+    position:absolute;
+
+    //12 px dall' alto e 12 px da sinistra
+    top:12px;
+    right:12px;
+
+    height: 34px;      
+    width:34px;
+    background-color: $light-red;
+    background-image: url('../../assets/delete_icon.svg');    //ci metto come url il delete icon che ho preso da 'https://raw.githubusercontent.com/Devstackr/tutorial-project-resources/master/productMate-Angular/delete_icon.svg'
+    background-repeat: no-repeat;  //Non far ripetere la x 
+    background-position: center;            //centrare la x    
+    
+    transition: opacity 0.2s ease-out ,transform 0.2s ease-out;       //Per un effetto grafico
+
+
+    border-radius:4px;
+      opacity:0;  //da default
+
+      transform:scale(0.35);
+
+
+      //CSS PER QUANDO CI PASSO SOPRA
+      &:hover{
+          background-color: darken($light-red,2%);
+      }
+
+      //onclick
+      &:active{
+        background-color: darken($light-red,4%);
+      }
+}
+
+.ingredienti {
+  display: flex;
+  padding: 0 0 10px 0px;
+}
+
+.ingrediente_quantita {
+    font-size: 20px; 
+    color: green;
+}
+.ingrediente_nome {
+    font-size: 12px;
+}
+.ingrediente img {
+    width: 50%;
+}
+.ingrediente {
+    
+    height: 45px;
+    width: 130px;
+    display: flex;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.ingrediente > div {
+    background: orange;
+    color: white;
+    width: 100%;
+    padding-left: 5px;
+}
+
+@media (max-width: 600px) {
+ .order-item-container .order-item-content { display: block; }
+}

@@ -1,0 +1,25 @@
+<div class="main-container container">
+
+  <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Ruolo</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of users">
+        <td>{{ u.id }}</td>
+        <td>{{ u.username }}</td>
+        <td>{{ u.email }}</td>
+        <td>{{ u.role }}</td>
+        <td width="80px">
+          <a class="has-text-grey" [routerLink]="'/users/'+u.id"> Vedi&raquo;</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

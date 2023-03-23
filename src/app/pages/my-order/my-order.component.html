@@ -1,4 +1,4 @@
-<div class="main-container container">
+<div *ngIf="order" class="main-container container">
 
   <table class="table is-bordered is-striped is-hoverable is-fullwidth">
     <thead>
@@ -7,11 +7,11 @@
         <th>Data</th>
         <th>Stato</th>
         <th>Totale Ordine</th>
-        <th *ngIf="order.stato == 'DA_PAGARE'"></th>
+        <th *ngIf="order.stato == 'DA_PAGARE'" class="big-screen"></th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngIf="order">
+      <tr>
         <td>{{ order.id }}</td>
         <td>{{ order.data | date: 'dd/MM/yyyy HH:mm' }}</td>
         <td>
@@ -20,10 +20,14 @@
             'is-info': order.stato == 'PAGATO',
             'is-success': order.stato == 'EVASO'
           }">{{ order.stato }}</span>
-
+          <div *ngIf="order.stato == 'DA_PAGARE'" class="buttons small-screen">
+            <a class="x-button button is-warning" target="_blank"
+              [href]="endPointBanca + '?payToken=' + order.payToken">Paga
+              Ora</a>
+          </div>
         </td>
         <td>{{ order.totale | currency:'EUR' }}</td>
-        <td width="120px" *ngIf="order.stato == 'DA_PAGARE'">
+        <td width="120px" *ngIf="order.stato == 'DA_PAGARE'" class="big-screen">
           <div class="buttons">
             <a class="x-button button is-warning" target="_blank"
               [href]="endPointBanca + '?payToken=' + order.payToken">Paga
@@ -34,7 +38,7 @@
     </tbody>
   </table>
 
-  <pre>
-    {{ jsonOrdine }}
-  </pre>
+  <div>
+    <app-order-item *ngFor="let p of order.products" [product]="p"></app-order-item>
+  </div>
 </div>

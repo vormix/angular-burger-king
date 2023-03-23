@@ -1,3 +1,40 @@
-<div class="main-container">
-  <p>Order Details</p>
+<div *ngIf="order" class="main-container container">
+
+  <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Data</th>
+        <th>Stato</th>
+        <th>Totale Ordine</th>
+        <th *ngIf="order.stato == 'PAGATO'" class="big-screen"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ order.id }}</td>
+        <td>{{ order.username }}</td>
+        <td>{{ order.data | date: 'dd/MM/yyyy HH:mm' }}</td>
+        <td>
+          <span class="tag is-light" [ngClass]="{
+            'is-warning': order.stato == 'DA_PAGARE',
+            'is-info': order.stato == 'PAGATO',
+            'is-success': order.stato == 'EVASO'
+          }">{{ order.stato }}</span>
+          <button *ngIf="order.stato == 'PAGATO'" class="x-button button is-info small-screen">Lavora</button>
+        </td>
+        <td>{{ order.totale | currency:'EUR' }}</td>
+        <td width="120px" *ngIf="order.stato == 'PAGATO'" class="big-screen">
+          <div class="buttons">
+            <button class="x-button button is-info" (click)="lavoraOrdine(order.id)">Lavora</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div>
+    <app-order-item *ngFor="let p of order.products" [product]="p"></app-order-item>
+  </div>
 </div>

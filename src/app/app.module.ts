@@ -30,6 +30,9 @@ import { CallbackComponent } from './pages/callback/callback.component';
 import { NoAuthGuardService } from './services/noauth.activate.service';
 import { MyOrdersComponent } from './pages/my-orders/my-orders.component';
 import { MyOrderComponent } from './pages/my-order/my-order.component';
+import { OrderItemComponent } from './order-item/order-item.component';
+import { UsersListComponent } from './pages/users-list/users-list.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,10 @@ import { MyOrderComponent } from './pages/my-order/my-order.component';
     OrderDetailsComponent,
     CallbackComponent,
     MyOrdersComponent,
-    MyOrderComponent
+    MyOrderComponent,
+    OrderItemComponent,
+    UsersListComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -27,6 +27,8 @@
             (click)="toggleOpen()">Catalogo</a>
           <a *ngIf="authService.role == 'Admin'" class="navbar-item" routerLink="/orders"
             (click)="toggleOpen()">Ordini</a>
+          <a *ngIf="authService.role == 'Admin'" class="navbar-item" routerLink="/users"
+            (click)="toggleOpen()">Utenti</a>
           <a *ngIf="authService.role == 'Customer'" class="navbar-item" routerLink="/my-orders" (click)="toggleOpen()">I
             miei
             Ordini</a>

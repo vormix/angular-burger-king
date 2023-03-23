@@ -16,6 +16,8 @@ import { CallbackComponent } from './pages/callback/callback.component';
 import { NoAuthGuardService } from './services/noauth.activate.service';
 import { MyOrdersComponent } from './pages/my-orders/my-orders.component';
 import { MyOrderComponent } from './pages/my-order/my-order.component';
+import { UsersListComponent } from './pages/users-list/users-list.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 
 const routes: Routes = [
@@ -86,7 +88,16 @@ const routes: Routes = [
       {path:'new',component:IngredientDetailsComponent},
       {path:':id',component:IngredientDetailsComponent}
     ]
-  }
+  },
+  {
+    path:'users',
+    component: MainLayoutComponent ,
+    canActivate: [AuthGuardService, AdminGuardService],
+    children:[
+      {path:'',component:UsersListComponent},
+      {path:':id',component:UserDetailComponent}
+    ]
+  },
   
 ];
 

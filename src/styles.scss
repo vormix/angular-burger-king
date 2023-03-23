@@ -69,6 +69,11 @@ $modal-content-width: 1200px;
 // 6. Import the rest of Bulma
 @import "../node_modules/bulma/bulma.sass";
 
+@media(min-width:992px) {
+    .small-screen {
+        display: none;
+    }
+}
 
 @media(max-width:992px) {
     .big-screen {
