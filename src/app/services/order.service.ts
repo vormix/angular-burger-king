@@ -12,8 +12,8 @@ export class OrderService {
   
   constructor(private http : HttpClient) { }
   
-  getAll(){   
-    return this.http.get(environment.endPoint + 'api/orders/GetOrders');    
+  getAll(): Observable<OrderDto[]>{   
+    return this.http.get<OrderDto[]>(environment.endPoint + 'api/orders/GetOrders');    
   }
 
   getMyOrders(): Observable<OrderDto[]>{  

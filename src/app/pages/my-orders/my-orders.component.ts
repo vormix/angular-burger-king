@@ -16,7 +16,7 @@ export class MyOrdersComponent {
   ngOnInit() {
     this.endPointBanca = environment.endPointBanca;
     
-    this.orderService.getAll().subscribe((x: any) => {
+    this.orderService.getMyOrders().subscribe((x: any) => {
       this.orders = x;
       console.log(x);
     })
