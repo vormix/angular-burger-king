@@ -22,7 +22,8 @@
             'is-info': order.stato == 'PAGATO',
             'is-success': order.stato == 'EVASO'
           }">{{ order.stato }}</span>
-          <button *ngIf="order.stato == 'PAGATO'" class="x-button button is-info small-screen">Lavora</button>
+          <button *ngIf="order.stato == 'PAGATO'" class="x-button button is-info small-screen"
+            (click)="lavoraOrdine(order.id)">Lavora</button>
         </td>
         <td>{{ order.totale | currency:'EUR' }}</td>
         <td width="120px" *ngIf="order.stato == 'PAGATO'" class="big-screen">
