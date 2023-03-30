@@ -1,14 +1,14 @@
-<!-- <p>login works!</p>
-<button (click)="login()">Login</button>
+<!-- <p>register works!</p>
+<button (click)="register()">Login</button>
  -->
 
 
 <div class="container box">
 
-  <h3>Login</h3>
+  <h3>Registrazione</h3>
 
   <!--CREO UN FORM-->
-  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+  <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
 
 
 
@@ -19,6 +19,15 @@
         <input type="text" name="username" [(ngModel)]="username" required class="input">
       </div>
       <!-- <label class="label"> {{ username }}</label> -->
+    </div>
+    <br>
+
+    <div class="field">
+      <label class="label"> Email</label>
+      <div class="control">
+        <input type="email" name="email" [(ngModel)]="email" required class="input" email>
+      </div>
+      <!-- <label class="label"> {{ email }}</label> -->
     </div>
     <br>
 
@@ -34,11 +43,11 @@
     <div class="control">
       <label *ngIf="(username != '' || password != '')" class="label error">{{ errorMessage
         }}</label>
-      <button class="button is-success" type="submit" [disabled]="!loginForm.valid">Login</button>
+      <button class="button is-success" type="submit" [disabled]="!registerForm.valid">Registrati</button>
     </div>
 
     <p class="mt-3">
-      Non hai un account? <a [routerLink]="'/register'">Registrati qui</a>
+      Hai già un account? <a [routerLink]="'/login'">Vai al login</a>
     </p>
 
 

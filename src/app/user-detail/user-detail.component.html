@@ -1,21 +1,59 @@
-<div class="main-container container">
+<div class="form-container">
 
-  <table class="table is-bordered is-striped is-hoverable is-fullwidth">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Username</th>
-        <th>Email</th>
-        <th>Ruolo</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngIf="user">
-        <td>{{ user.id }}</td>
-        <td>{{ user.username }}</td>
-        <td>{{ user.email }}</td>
-        <td>{{ user.role }}</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <!--CREO UN FORM-->
+  <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+
+
+
+    <!--La classe field è una classe di bulma -->
+    <div class="field">
+      <label class="label"> Username</label>
+      <div class="control">
+        <input type="text" name="username" [ngModel]="user.username" required class="input">
+        <!-- <div>{{ user.username }}</div> -->
+      </div>
+    </div>
+    <br>
+
+    <div class="field">
+      <label class="label"> Email</label>
+      <div class="control">
+        <input type="text" name="email" [ngModel]="user.email" required class="input">
+        <!-- <div>{{ user.email }}</div> -->
+      </div>
+    </div>
+    <br>
+
+    <div class="field">
+      <label class="label">Ruolo</label>
+      <div class="control">
+        <select name="role" class="input" [ngModel]="user.role" required>
+          <option value="">-Seleziona-</option>
+          <option value="Admin">Amministratore</option>
+          <option value="Customer">Cliente</option>
+        </select>
+      </div>
+      <!-- <div>{{ user.role }}</div> -->
+    </div>
+
+
+    <div class="field is-grouped is-pulled-right">
+
+      <div class="control">
+        <button class="button is-text" type="button" (click)="cancel()">Indietro</button>
+      </div>
+
+      <div class="control" *ngIf="!new">
+        <button class="button is-danger" type="button" (click)="deleteUser()">Elimina</button>
+      </div>
+
+      <div class="control">
+        <button class="button is-success" type="submit" [disabled]="!userForm.valid">Salva</button>
+      </div>
+
+    </div>
+  </form>
+
+
 </div>

@@ -33,6 +33,7 @@ import { MyOrderComponent } from './pages/my-order/my-order.component';
 import { OrderItemComponent } from './order-item/order-item.component';
 import { UsersListComponent } from './pages/users-list/users-list.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     MyOrderComponent,
     OrderItemComponent,
     UsersListComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

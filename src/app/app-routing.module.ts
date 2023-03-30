@@ -18,6 +18,7 @@ import { MyOrdersComponent } from './pages/my-orders/my-orders.component';
 import { MyOrderComponent } from './pages/my-order/my-order.component';
 import { UsersListComponent } from './pages/users-list/users-list.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,11 @@ const routes: Routes = [
     path: 'login',
     canActivate: [NoAuthGuardService],
     component: LoginComponent
+  },
+  {
+    path: 'register',
+    canActivate: [NoAuthGuardService],
+    component: RegisterComponent
   },
   {
     path: 'cart',
@@ -95,6 +101,7 @@ const routes: Routes = [
     canActivate: [AuthGuardService, AdminGuardService],
     children:[
       {path:'',component:UsersListComponent},
+      {path:'new',component:UserDetailComponent},
       {path:':id',component:UserDetailComponent}
     ]
   },
