@@ -1,4 +1,72 @@
-<!--DIV CHE RACCHIUDE TUTTO-->
+<div class="menu-6-item bg-white">
+
+  <!-- IMAGE -->
+  <div class="menu-6-img rel">
+    <div class="hover-overlay">
+
+      <!-- Image -->
+      <img class="img-fluid" src="{{ product?.immaginePrincipale }}" alt="menu-image" />
+
+      <!-- Item Code -->
+      <span class="item-code bg-tra-dark">Code: 0850</span>
+
+      <!-- Zoom Icon -->
+      <div class="menu-img-zoom ico-25">
+        <a href="{{ product?.immaginePrincipale }}" class="image-link">
+          <span class="flaticon-zoom"></span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TEXT -->
+  <div class="menu-6-txt rel">
+
+    <!-- Rating -->
+    <div class="item-rating">
+      <div class="stars-rating stars-lg">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star-half-alt"></i>
+      </div>
+    </div>
+
+    <!-- Like Icon -->
+    <div class="like-ico ico-25">
+      <a href="#"><span class="flaticon-heart"></span></a>
+    </div>
+
+    <!-- Title -->
+    <h5 class="h5-sm">{{ product?.nome }}</h5>
+
+    <!-- Description -->
+    <p class="grey-color">Chicken breast, chilli sauce, tomatoes, pickles, coleslaw</p>
+
+    <!-- Price -->
+    <div class="menu-6-price bg-coffee">
+      <h5 class="h5-xs yellow-color">{{ product?.prezzo | currency: 'EUR' }}</h5>
+    </div>
+
+    <!-- Add To Cart -->
+    <div class="add-to-cart bg-yellow ico-10">
+      <a (click)="onClick()"><span class="flaticon-shopping-bag"></span> Add to Cart</a>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+
+<!-- 
+
+
 <div #container class="product-card-container animate__animated animate__fadeInLeft animate__fast">
 
   <div>
@@ -14,12 +82,7 @@
         <span>{{ product?.prezzo | currency: 'EUR' }}</span>
       </div>
 
-      <!--Titolo della carta-->
-
-      <!--Corpo della carta-->
       <div #bodyText class="product-card-body">
-        <!--TESTO testo della carta-->
-
 
         <div #truncator class="fade-out-truncation">
 
@@ -30,7 +93,6 @@
     </div>
   </div>
 
-  <!--DIV PER IL TITOLO-->
 
 
   <div [ngClass]="{ 'animate__heartBeat': isAdding }" class="x-button button is-info" (click)="onClick()">
@@ -41,4 +103,4 @@
 
 
 
-</div>
+</div> -->

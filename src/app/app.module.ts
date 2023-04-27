@@ -34,6 +34,10 @@ import { OrderItemComponent } from './order-item/order-item.component';
 import { UsersListComponent } from './pages/users-list/users-list.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { HomepageComponent } from './pages/homepage/homepage.component';
+import { HeaderComponent } from './template-parts/header/header.component';
+import { FooterComponent } from './template-parts/footer/footer.component';
+import { FooterEmptyComponent } from './template-parts/footer-empty/footer-empty.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +64,11 @@ import { RegisterComponent } from './pages/register/register.component';
     OrderItemComponent,
     UsersListComponent,
     UserDetailComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomepageComponent,
+    HeaderComponent,
+    FooterComponent,
+    FooterEmptyComponent,
   ],
   imports: [
     BrowserModule,

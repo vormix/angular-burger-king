@@ -1,3 +1,303 @@
+<!-- PRELOADER SPINNER
+		============================================= -->
+<div id="loader-wrapper">
+  <div id="loader">
+    <div class="cssload-spinner">
+      <div class="cssload-ball cssload-ball-1"></div>
+      <div class="cssload-ball cssload-ball-2"></div>
+      <div class="cssload-ball cssload-ball-3"></div>
+      <div class="cssload-ball cssload-ball-4"></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- STYLE SWITCHER
+		============================================= -->
+<div id="stlChanger">
+  <div class="blockChanger bgChanger">
+    <a href="#" class="chBut icon-xs"><span class="flaticon-layers-1"></span></a>
+    <div class="chBody white-color">
+
+      <div class="stBlock text-center" style="margin: 30px 20px 20px 26px">
+        <p>Choose Demo</p>
+        <a class="s_1" href="demo-1.html"><img src="assets/images/color-scheme/l-01.jpg" width="180" height="93"
+            alt="layout-image"></a>
+        <a class="s_1" href="demo-2.html"><img src="assets/images/color-scheme/l-02.jpg" width="180" height="130"
+            alt="layout-image"></a>
+        <a class="s_1" href="demo-3.html"><img src="assets/images/color-scheme/l-03.jpg" width="180" height="98"
+            alt="layout-image"></a>
+        <a class="s_1" href="demo-4.html"><img src="assets/images/color-scheme/l-04.jpg" width="180" height="115"
+            alt="layout-image"></a>
+        <a class="s_1" href="demo-5.html"><img src="assets/images/color-scheme/l-05.jpg" width="180" height="118"
+            alt="layout-image"></a>
+        <a class="s_1" href="demo-6.html"><img src="assets/images/color-scheme/l-06.jpg" width="180" height="93"
+            alt="layout-image"></a>
+        <a class="s_1" href="demo-7.html"><img src="assets/images/color-scheme/l-07.jpg" width="180" height="121"
+            alt="layout-image"></a>
+        <a class="s_1" href="demo-8.html"><img src="assets/images/color-scheme/l-08.jpg" width="180" height="115"
+            alt="layout-image"></a>
+        <a class="s_1" href="demo-9.html"><img src="assets/images/color-scheme/l-09.jpg" width="180" height="109"
+            alt="layout-image"></a>
+        <a class="s_1" href="demo-10.html"><img src="assets/images/color-scheme/l-10.jpg" width="180" height="125"
+            alt="layout-image"></a>
+        <a class="s_1" href="demo-11.html"><img src="assets/images/color-scheme/l-11.jpg" width="180" height="128"
+            alt="layout-image"></a>
+        <a class="s_1" href="demo-12.html"><img src="assets/images/color-scheme/l-12.jpg" width="180" height="123"
+            alt="layout-image"></a>
+      </div>
+
+    </div>
+  </div>
+</div> <!-- END SWITCHER -->
+
+
+
+
+<!-- HEADER-3
+		============================================= -->
+<header id="header-3" class="header navik-header header-transparent header-shadow">
+  <div class="container">
+
+
+    <!-- NAVIGATION MENU -->
+    <div class="navik-header-container">
+
+
+      <!-- CALL BUTTON -->
+      <div class="callusbtn"><a href="tel:123456789"><i class="fas fa-phone"></i></a></div>
+
+
+      <!-- LOGO IMAGE -->
+      <div class="logo" data-mobile-logo="assets/images/logo-01.png" data-sticky-logo="assets/images/logo-01.png">
+        <a routerLink="/">
+          <img src="assets/images/logo-01.png" alt="header-logo" />
+        </a>
+
+      </div>
+
+
+      <!-- BURGER MENU -->
+      <div class="burger-menu">
+        <div class="line-menu line-half first-line"></div>
+        <div class="line-menu"></div>
+        <div class="line-menu line-half last-line"></div>
+      </div>
+
+
+      <!-- MAIN MENU -->
+      <nav class="navik-menu menu-caret navik-yellow">
+        <ul *ngIf="authService.isUserLoggedIn() && authService.role == 'Admin'" class="top-list">
+          <li><a routerLink="/ingredients">Ingredienti</a></li>
+          <li><a routerLink="/products">Prodotti</a></li>
+          <li><a routerLink="/orders">Ordini</a></li>
+          <li><a routerLink="/users">Utenti</a></li>
+
+          <!-- HEADER BUTTON  -->
+          <li class="nav-btn yellow-color"><a href="#">{{ username }}</a></li>
+
+          <li>
+            <a class="logout-btn" (click)="logout()">
+              <strong>Logout</strong>
+            </a>
+          </li>
+        </ul>
+
+        <ul *ngIf="authService.isUserLoggedIn() && authService.role == 'Customer'" class="top-list">
+
+          <li><a routerLink="/catalog">Catalogo</a></li>
+          <li><a routerLink="/my-orders">I miei Ordini</a></li>
+
+          <!-- HEADER BUTTON  -->
+          <li class="nav-btn yellow-color"><a href="#">{{ username }}</a></li>
+
+          <!-- BASKET ICON -->
+          <li class="basket-ico ico-30">
+            <a routerLink="/cart">
+              <span class="ico-holder"><span class="flaticon-shopping-bag"></span> <em class="roundpoint">{{
+                  productsService.numCartProducts
+                  }}</em></span>
+            </a>
+          </li>
+
+          <li>
+            <a class="logout-btn" (click)="logout()">
+              <strong>Logout</strong>
+            </a>
+          </li>
+        </ul>
+
+        <ul *ngIf="!authService.isUserLoggedIn()" class="top-list">
+          <li>
+            <a class="logout-btn" routerLink="/login">
+              <strong>Login</strong>
+            </a>
+          </li>
+        </ul>
+
+      </nav> <!-- END MAIN MENU -->
+
+
+    </div> <!-- END NAVIGATION MENU -->
+
+
+  </div> <!-- End container -->
+</header> <!-- END HEADER-3 -->
+
+<div id="page" class="page">
+
+  <router-outlet></router-outlet>
+
+  <footer id="footer-4" class="footer division">
+    <div class="container grey-color">
+
+
+      <!-- FOOTER CONTENT -->
+      <div class="row">
+
+
+        <!-- FOOTER INFO -->
+        <div class="col-xl-3">
+          <div class="footer-info mb-40">
+
+            <!-- Footer Logo -->
+            <div class="footer-logo"><img src="assets/images/logo-01.png" alt="footer-logo" /></div>
+
+            <!-- Text -->
+            <p>gianluigio --- An orci nullam tempor a sapien eget gravida and integer donec ipsum porta justo integer
+            </p>
+
+          </div>
+        </div>
+
+
+        <!-- FOOTER CONTACTS -->
+        <div class="col-md-6 col-lg-4 col-xl-3">
+          <div class="footer-contacts mb-40">
+
+            <!-- Title -->
+            <h5 class="h5-sm">Order Now</h5>
+
+            <!-- Address -->
+            <p>8721 M Central Avenue,</p>
+            <p>Los Angeles, CA 90036</p>
+
+            <!-- Contacts -->
+            <p class="foo-email txt-500 mt-15"><a href="mailto:yourdomain@mail.com">hello@yourdomain.com</a></p>
+            <p><span class="yellow-color"><a href="tel:123456789">789-654-3210</a></span></p>
+
+          </div>
+        </div>
+
+
+        <!-- FOOTER INFO -->
+        <div class="col-md-6 col-lg-4 col-xl-3">
+          <div class="footer-info mb-30">
+
+            <!-- Title -->
+            <h5 class="h5-sm">Working Hours</h5>
+
+            <!-- Text -->
+            <p>Quaerat neque purus ipsum at neque dolor primis tempus</p>
+
+            <!-- Text -->
+            <p class="mt-15">Mon-Fri: <span>9:00AM - 10:00PM</span></p>
+            <p>Saturday: <span>10:00AM - 8:30PM</span></p>
+            <p>Sunday: <span>12:00PM - 5:00PM</span></p>
+
+          </div>
+        </div>
+
+
+        <!-- FOOTER IMAGES -->
+        <div class="col-md-12 col-lg-4 col-xl-3">
+          <div class="footer-img mb-40">
+
+            <!-- Title -->
+            <h5 class="h5-sm">Instagram Feed</h5>
+
+            <!-- Instagram Images -->
+            <ul class="text-center clearfix">
+              <li><a href="#" target="_blank"><img class="insta-img" src="assets/images/instagram/img-01.jpg"
+                    alt="insta-img"></a></li>
+              <li><a href="#" target="_blank"><img class="insta-img" src="assets/images/instagram/img-02.jpg"
+                    alt="insta-img"></a></li>
+              <li><a href="#" target="_blank"><img class="insta-img" src="assets/images/instagram/img-03.jpg"
+                    alt="insta-img"></a></li>
+              <li><a href="#" target="_blank"><img class="insta-img" src="assets/images/instagram/img-04.jpg"
+                    alt="insta-img"></a></li>
+              <li><a href="#" target="_blank"><img class="insta-img" src="assets/images/instagram/img-05.jpg"
+                    alt="insta-img"></a></li>
+              <li><a href="#" target="_blank"><img class="insta-img" src="assets/images/instagram/img-06.jpg"
+                    alt="insta-img"></a></li>
+            </ul>
+
+          </div>
+        </div> <!-- END FOOTER IMAGES -->
+
+
+      </div> <!-- END FOOTER CONTENT -->
+
+
+      <!-- BOTTOM FOOTER -->
+      <div class="bottom-footer">
+        <div class="row d-flex align-items-center">
+
+
+          <!-- FOOTER COPYRIGHT -->
+          <div class="col-md-5 col-lg-6">
+            <div class="footer-copyright">
+              <p>&copy; 2020 Testo. All Rights Reserved</p>
+            </div>
+          </div>
+
+
+          <!-- BOTTOM FOOTER LINKS -->
+          <div class="col-md-7 col-lg-6">
+            <ul class="bottom-footer-list text-right clearfix">
+              <li>
+                <p class="first-list-link"><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></p>
+              </li>
+              <li>
+                <p><a href="#"><i class="fab fa-twitter"></i> Twitter</a></p>
+              </li>
+              <li>
+                <p><a href="#"><i class="fab fa-youtube"></i> YouTube</a></p>
+              </li>
+              <li>
+                <app-footer-empty></app-footer-empty>
+              </li>
+            </ul>
+          </div>
+
+
+        </div> <!-- End row -->
+      </div> <!-- END BOTTOM FOOTER -->
+
+
+    </div> <!-- End container -->
+  </footer> <!-- END FOOTER-4 -->
+
+</div> <!-- END PAGE CONTENT -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
 <div class="layout-box">
 
   <nav class="navbar is-primary is-fixed-top " role="navigation" aria-label="main navigation">
@@ -64,4 +364,4 @@
     <router-outlet></router-outlet>
   </div>
 
-</div>
+</div> -->

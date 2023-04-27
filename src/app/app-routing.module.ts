@@ -19,13 +19,22 @@ import { MyOrderComponent } from './pages/my-order/my-order.component';
 import { UsersListComponent } from './pages/users-list/users-list.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { HomepageComponent } from './pages/homepage/homepage.component';
 
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   canActivate: [NoAuthGuardService],
+  //   component: LoginComponent
+  // },
   {
     path: '',
+    component: MainLayoutComponent ,
     canActivate: [NoAuthGuardService],
-    component: LoginComponent
+    children:[
+      {path:'',component:HomepageComponent}
+    ]
   },
   {
     path: 'login',

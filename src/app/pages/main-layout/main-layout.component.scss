@@ -1,57 +1,8 @@
-@import '../../../main-styles.scss';
-
-.layout-box{    
-    display:flex;
-    flex-direction: column;
-    height: 100%;
-    overflow: hidden;
-
-    .page-content{
-        flex-grow: 1;
-        overflow-y: scroll;
-    }
-}
-
-
-.top-bar{
-        width:100%;
-        height: 68px;
-        //le variabili le avevo definite su main-styles.scss
-        background: $blue;
-        box-shadow: 0px 0px 10px 0px rgba(black,0.15);
-
-
-        display:flex;
-        flex-shrink: 0; //per non ridurre la top-bar
-
-
-        //centro l'elemento figlio PRECISAMENTE 
-        justify-content: center;
-        align-items: center;   
-
-        h1{
-            color:white;
-            font-size:24px; 
-            margin: auto;
-        }
-    }
 
 
 
-.user-login-info {
 
-    margin-right: 20px;
-    margin-left: 20px;
-    display: flex;
-    gap: 20px;
-    align-items: center;
-}
 
-.links {
-  display: flex;
-  gap: 30px;
-  margin-right: 60px;
-  a {
-    color: white;
-  }
+.logout-btn {
+    color: #e3000e !important;
 }
